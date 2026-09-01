@@ -1,0 +1,165 @@
+<title>Signature Manifesto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #0d1b2a;
+    --ink-soft: #16283b;
+    --ivory: #f6f3ec;
+    --paper: #fffefb;
+    --emerald: #1c6e5a;
+    --emerald-bright: #2a9d78;
+    --line-on-ink: #2a4058;
+    --line-on-ivory: #d9d3c6;
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--body); background: var(--ivory); color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  em { font-style: italic; font-family: var(--display); color: var(--emerald-bright); font-weight: 400; }
+  .scene em { color: var(--emerald-bright); }
+  .scene.on-ivory em { color: var(--emerald); }
+
+  .scene {
+    min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 6rem 1.5rem; position: relative;
+  }
+  .scene.on-ink { background: var(--ink); color: var(--ivory); }
+  .scene.on-ivory { background: var(--ivory); color: var(--ink); }
+  .scene.on-paper { background: var(--paper); color: var(--ink); }
+  .scene + .scene.on-ink { border-top: 1px solid var(--line-on-ink); }
+  .scene + .scene.on-ivory, .scene + .scene.on-paper { border-top: 1px solid var(--line-on-ivory); }
+
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  }
+
+  .eyebrow {
+    font-family: var(--body); font-size: 12.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--emerald-bright); margin: 0 0 1.6rem;
+  }
+  .scene.on-ivory .eyebrow, .scene.on-paper .eyebrow { color: var(--emerald); }
+
+  h1.opener {
+    font-family: var(--display); font-weight: 400; letter-spacing: -0.01em;
+    font-size: clamp(2.6rem, 2rem + 4.5vw, 5.6rem); line-height: 1.04; margin: 0 0 1.8rem; text-wrap: balance;
+  }
+  h2.line {
+    font-family: var(--display); font-weight: 400; letter-spacing: -0.008em;
+    font-size: clamp(2rem, 1.5rem + 3.2vw, 4.1rem); line-height: 1.1; margin: 0 0 1.6rem; text-wrap: balance;
+    max-width: 18ch;
+  }
+  p.sub {
+    font-size: clamp(1rem, 0.94rem + 0.3vw, 1.2rem); line-height: 1.6; max-width: 42ch; margin: 0 auto;
+    opacity: 0.82;
+  }
+  .scene-mark { margin-bottom: 2rem; }
+
+  .actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2.8rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.7rem; border-radius: 100px;
+    font-family: var(--body); font-weight: 600; font-size: 15px; text-decoration: none; transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--emerald-bright); color: var(--ink); }
+  .btn-primary:hover { background: #3db38b; }
+  .btn-ghost { border: 1px solid rgba(246,243,236,0.35); color: var(--ivory); }
+  .scene.on-ivory .btn-ghost, .scene.on-paper .btn-ghost { border-color: var(--line-on-ivory); color: var(--ink); }
+
+  .scroll-cue {
+    position: absolute; bottom: 2.4rem; left: 50%; transform: translateX(-50%);
+    font-family: var(--body); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(246,243,236,0.5); display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+  }
+  .scroll-cue span { width: 1px; height: 34px; background: rgba(246,243,236,0.35); }
+
+  footer.close {
+    background: var(--ink); color: var(--ivory); padding: 4.5rem 1.5rem 3rem; text-align: center;
+  }
+  .close-mark { margin-bottom: 1.6rem; }
+  .close p { font-size: 13.5px; color: rgba(246,243,236,0.55); max-width: 46ch; margin: 0.4rem auto; line-height: 1.6; }
+  .close .legal { font-size: 12px; margin-top: 2rem; color: rgba(246,243,236,0.4); }
+  .close a { color: rgba(246,243,236,0.75); }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('in'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.35 });
+    els.forEach(function (e) { obs.observe(e); });
+    var first = document.querySelector('.scene-1 .reveal');
+    if (first) setTimeout(function () { first.classList.add('in'); }, 120);
+  });
+</script>
+
+<section class="scene on-ink scene-1">
+  <svg class="scene-mark reveal" width="34" height="34" viewBox="0 0 26 26" aria-hidden="true">
+    <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="#2a9d78" stroke-width="1.4" stroke-linejoin="round"></path>
+    <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="#2a9d78"></rect>
+    <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="#1c6e5a"></rect>
+  </svg>
+  <p class="eyebrow reveal">Signature Private Cooperative</p>
+  <h1 class="opener reveal">Real assets.<br><em>Owned together.</em></h1>
+  <p class="sub reveal">Not shares in a company. Units in property, business, and farmland you can actually see.</p>
+  <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+</section>
+
+<section class="scene on-ivory">
+  <p class="eyebrow reveal">How you get in</p>
+  <h2 class="line reveal">You don't sign up.<br>You're <em>brought in</em>.</h2>
+  <p class="sub reveal">Every member arrives through someone who already trusts them, or through our own vetting. That's not a growth mechanic. It's the whole point of a cooperative: you know who you're in business with.</p>
+</section>
+
+<section class="scene on-ink">
+  <p class="eyebrow reveal">What you actually hold</p>
+  <h2 class="line reveal">A unit is a <em>real claim</em>,<br>not a promise on a screen.</h2>
+  <p class="sub reveal">The cooperative holds each asset in trust, for the members who capitalized it, and records your exact interest in it on paper you can read. Your name isn't on the title. Your ownership is still real, and it's recorded, not implied.</p>
+</section>
+
+<section class="scene on-ivory">
+  <p class="eyebrow reveal">What we won't say</p>
+  <h2 class="line reveal">We won't tell you<br>what you'll earn.</h2>
+  <p class="sub reveal">No projections. No target returns. What we show you is a worked example: real arithmetic on a real distribution, run backward from what an asset actually earned, not forward from what we hope it will.</p>
+</section>
+
+<section class="scene on-ink">
+  <p class="eyebrow reveal">What's slower on purpose</p>
+  <h2 class="line reveal">You can't cash out<br>on a whim.</h2>
+  <p class="sub reveal">Your capital moves through scheduled windows, not whenever the mood strikes. A building doesn't sell in an afternoon, and pretending otherwise is how platforms quietly become unable to pay everyone at once. We'd rather be honest about the wait.</p>
+</section>
+
+<section class="scene on-ivory">
+  <p class="eyebrow reveal">What can't be undone</p>
+  <h2 class="line reveal">Every entry stays.<br><em>Nobody edits history.</em></h2>
+  <p class="sub reveal">Every deposit, every distribution, every transfer is written once and locked. Not by policy. By the system itself. We can't quietly fix a number after the fact, and neither can anyone else.</p>
+</section>
+
+<section class="scene on-ink">
+  <h2 class="line reveal" style="max-width: 22ch;">This isn't for everyone.<br>It's for people who'd rather<br>own <em>something real</em>, slowly,<br>together.</h2>
+  <div class="actions reveal">
+    <a class="btn btn-primary" href="https://signatureprivatecoop.com" target="_blank" rel="noopener">Apply for membership</a>
+    <a class="btn btn-ghost" href="https://claude.ai/code/artifact/1f9dd94d-7181-4113-8989-f3ca73910d5f" target="_blank" rel="noopener">Read the evidence</a>
+  </div>
+</section>
+
+<footer class="close">
+  <svg class="close-mark" width="26" height="26" viewBox="0 0 26 26" aria-hidden="true">
+    <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="#2a9d78" stroke-width="1.4" stroke-linejoin="round"></path>
+    <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="#2a9d78"></rect>
+    <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="#1c6e5a"></rect>
+  </svg>
+  <p>Signature Private Multipurpose Cooperative Society Limited</p>
+  <p class="legal">Registered under the Nigerian Co-operative Societies Act 98 of 2004, No. ABSG/MOPASP/2026/00343.<br>Every claim on this page is backed in full in <a href="https://claude.ai/code/artifact/1f9dd94d-7181-4113-8989-f3ca73910d5f" target="_blank" rel="noopener">the investor memorandum</a>.</p>
+</footer>
