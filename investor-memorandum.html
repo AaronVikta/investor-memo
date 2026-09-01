@@ -1,0 +1,596 @@
+<title>Signature Investor Memorandum</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #0d1b2a; --ink-soft: #1b2b3a;
+    --ivory: #f6f3ec; --paper: #fffefb; --paper-2: #fbfaf6;
+    --emerald: #1c6e5a; --emerald-bright: #2a9d78; --emerald-wash: #e4efe9;
+    --slate: #5a6672; --slate-soft: #5f6b77;
+    --line: #d9d3c6; --line-strong: #c9c1af;
+    --danger: #b0413a; --danger-wash: #f7e9e7;
+    --gold: #a9782f; --gold-wash: #f3ead4;
+
+    --bg: var(--ivory); --surface: var(--paper); --surface-2: var(--paper-2);
+    --text: var(--ink); --text-secondary: var(--slate); --text-muted: var(--slate-soft);
+    --border: var(--line); --accent: var(--emerald); --accent-bright: var(--emerald-bright);
+    --accent-wash: var(--emerald-wash);
+    --shadow: 0 1px 2px rgba(13,27,42,0.04), 0 10px 26px -18px rgba(13,27,42,0.3);
+
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+      --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+      --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+      --accent-wash: #123328;
+      --danger: #e2685f; --danger-wash: #33161c;
+      --gold: #dcb15c; --gold-wash: #2e2310;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+    --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+    --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+    --accent-wash: #123328;
+    --danger: #e2685f; --danger-wash: #33161c;
+    --gold: #dcb15c; --gold-wash: #2e2310;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 16px; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-bright); text-decoration: underline; }
+  code, .cite { font-family: var(--mono); }
+  .cite {
+    font-size: 12.5px; color: var(--text-muted); background: var(--surface-2);
+    padding: 0.1rem 0.42rem; border-radius: 4px; white-space: nowrap; border: 1px solid var(--border);
+  }
+  ::selection { background: var(--accent-wash); }
+
+  .shell { display: grid; grid-template-columns: 260px minmax(0,1fr); max-width: 1240px; margin: 0 auto; }
+  .rail {
+    position: sticky; top: 0; align-self: start; height: 100dvh; overflow-y: auto;
+    padding: 2.4rem 1.4rem 2.4rem 1.8rem; border-right: 1px solid var(--border);
+  }
+  .rail-brand { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem; }
+  .rail-brand svg { flex-shrink: 0; }
+  .rail-brand-text { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .rail nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .rail a {
+    color: var(--text-secondary); font-size: 13.5px; padding: 0.32rem 0.6rem; border-radius: 6px;
+    display: block; line-height: 1.4;
+  }
+  .rail a.sub { padding-left: 1.4rem; font-size: 12.5px; color: var(--text-muted); }
+  .rail a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+  .rail-group { margin-top: 0.85rem; }
+  .rail-num { font-family: var(--mono); color: var(--text-muted); margin-right: 0.4rem; }
+
+  .main { padding: 3.4rem 3.4rem 8rem; max-width: 840px; }
+
+  header.doc-head { margin-bottom: 3.5rem; padding-bottom: 2.4rem; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 0.9rem;
+  }
+  h1.doc-title {
+    font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 1.7rem + 1.6vw, 2.9rem);
+    line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+  .doc-dek { font-size: 17px; color: var(--text-secondary); max-width: 60ch; margin: 0 0 1.4rem; }
+  .doc-meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .how-to-read {
+    margin-top: 1.6rem; padding: 1rem 1.2rem; background: var(--surface-2); border: 1px solid var(--border);
+    border-radius: 8px; font-size: 13.5px; color: var(--text-secondary);
+  }
+  .how-to-read b { color: var(--text); }
+
+  section.doc-section { margin-bottom: 4.2rem; scroll-margin-top: 1.5rem; }
+  h2.section-title {
+    font-family: var(--display); font-weight: 500; font-size: 1.9rem; letter-spacing: -0.01em;
+    margin: 0 0 0.4rem; scroll-margin-top: 1.5rem;
+  }
+  .section-num { font-family: var(--mono); color: var(--accent); font-size: 0.95rem; margin-right: 0.5rem; }
+  .section-dek { color: var(--text-secondary); font-size: 15px; max-width: 62ch; margin: 0 0 1.8rem; }
+
+  h3.sub-title {
+    font-family: var(--display); font-weight: 500; font-size: 1.32rem; letter-spacing: -0.005em;
+    margin: 2.4rem 0 0.9rem; scroll-margin-top: 1.5rem;
+  }
+  h3.sub-title:first-of-type { margin-top: 0; }
+  p { margin: 0 0 1rem; }
+  ul.plain, ol.plain { margin: 0 0 1rem; padding-left: 1.3rem; }
+  ul.plain li, ol.plain li { margin-bottom: 0.5rem; }
+  strong { font-weight: 600; color: var(--text); }
+  em.q { font-style: italic; color: var(--text); }
+
+  /* ---- evidence / claim blocks ---- */
+  .fact { margin: 0 0 1rem; padding-left: 0; }
+  .fact-list { list-style: none; margin: 0 0 1.3rem; padding: 0; display: flex; flex-direction: column; gap: 0.65rem; }
+  .fact-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: 14.5px; color: var(--text-secondary); }
+  .fact-list .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-top: 0.55rem; flex-shrink: 0; }
+  .fact-list strong { color: var(--text); }
+
+  .callout {
+    border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 8px;
+    background: var(--surface); box-shadow: var(--shadow); padding: 1.1rem 1.3rem; margin: 1.2rem 0 1.6rem;
+  }
+  .callout.gap { border-left-color: var(--gold); }
+  .callout.error { border-left-color: var(--danger); }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.45rem; display: block;
+  }
+  .callout.gap .callout-label { color: var(--gold); }
+  .callout.error .callout-label { color: var(--danger); }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout p { font-size: 14px; }
+
+  .formula {
+    font-family: var(--mono); font-size: 13.5px; background: var(--ink); color: #d8e9e0;
+    border-radius: 8px; padding: 1rem 1.2rem; margin: 1rem 0 1.4rem; overflow-x: auto; line-height: 1.7;
+  }
+  .formula .k { color: #7fd6ae; }
+  .formula .c { color: #7b93a8; }
+
+  blockquote.legal {
+    margin: 1rem 0 1.4rem; padding: 1rem 1.3rem; border-left: 3px solid var(--border);
+    background: var(--surface-2); font-style: italic; color: var(--text-secondary); font-size: 14.5px;
+  }
+  blockquote.legal cite { display: block; font-style: normal; font-family: var(--mono); font-size: 11.5px; margin-top: 0.6rem; color: var(--text-muted); }
+
+  /* ---- claims table ---- */
+  .claims-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 13.5px; }
+  .claims-table th {
+    text-align: left; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--text-muted); padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border-strong, var(--border));
+  }
+  .claims-table td { padding: 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--text-secondary); }
+  .claims-table tr:last-child td { border-bottom: none; }
+  .claims-table td:first-child { color: var(--text); }
+  .pill {
+    display: inline-flex; align-items: center; font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+    padding: 0.18rem 0.55rem; border-radius: 100px; white-space: nowrap; letter-spacing: 0.02em;
+  }
+  .pill.ok { background: var(--accent-wash); color: var(--accent); }
+  .pill.nuance { background: var(--gold-wash); color: var(--gold); }
+  .pill.gap { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+
+  /* ---- glossary / faq ---- */
+  .glossary-item { padding: 1rem 0; border-top: 1px solid var(--border); }
+  .glossary-item:last-child { border-bottom: 1px solid var(--border); }
+  .glossary-term { font-family: var(--display); font-weight: 500; font-size: 1.05rem; margin: 0 0 0.35rem; }
+  .glossary-def { font-size: 14px; color: var(--text-secondary); margin: 0; }
+
+  .faq-item { padding: 1.3rem 0; border-top: 1px solid var(--border); }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+  .faq-q { font-family: var(--display); font-weight: 500; font-size: 1.08rem; margin: 0 0 0.5rem; }
+  .faq-a { font-size: 14.5px; color: var(--text-secondary); margin: 0; }
+
+  /* ---- fee table ---- */
+  .fee-table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.6rem; font-size: 14px; }
+  .fee-table td { padding: 0.6rem 0.7rem; border-bottom: 1px solid var(--border); }
+  .fee-table td:first-child { color: var(--text); font-weight: 500; }
+  .fee-table td:last-child { text-align: right; font-family: var(--mono); color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+
+  .followup-list { list-style: none; margin: 0; padding: 0; counter-reset: fu; }
+  .followup-list li {
+    counter-increment: fu; position: relative; padding: 0.9rem 0 0.9rem 2.1rem; border-top: 1px solid var(--border);
+    font-size: 14.5px; color: var(--text-secondary);
+  }
+  .followup-list li:last-child { border-bottom: 1px solid var(--border); }
+  .followup-list li::before {
+    content: counter(fu); position: absolute; left: 0; top: 0.85rem; font-family: var(--mono); font-size: 12px;
+    color: var(--gold); font-weight: 600;
+  }
+
+  footer.doc-foot { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
+
+  .mobile-toc-toggle { display: none; }
+
+  @media (max-width: 980px) {
+    .shell { grid-template-columns: 1fr; }
+    .rail { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 1.4rem; }
+    .rail nav { display: none; }
+    .rail.open nav { display: flex; }
+    .mobile-toc-toggle {
+      display: flex; align-items: center; justify-content: space-between; width: 100%;
+      background: none; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.9rem;
+      font-family: var(--body); font-size: 13.5px; color: var(--text); cursor: pointer;
+    }
+    .main { padding: 2.2rem 1.4rem 5rem; }
+  }
+  @media (max-width: 560px) {
+    .claims-table, .claims-table thead { display: none; }
+  }
+</style>
+
+<script>
+  function toggleToc() {
+    document.querySelector('.rail').classList.toggle('open');
+  }
+</script>
+
+<div class="shell">
+  <aside class="rail" id="rail">
+    <div class="rail-brand">
+      <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="var(--accent-bright)" stroke-width="1.5" stroke-linejoin="round"></path>
+        <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="var(--accent-bright)"></rect>
+        <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="var(--accent)"></rect>
+      </svg>
+      <span class="rail-brand-text">Signature</span>
+    </div>
+    <button class="mobile-toc-toggle" onclick="toggleToc()">Contents <span aria-hidden="true">&#9662;</span></button>
+    <nav>
+      <a href="#introduction"><span class="rail-num">00</span>Introduction</a>
+      <div class="rail-group">
+        <a href="#executive-summary"><span class="rail-num">01</span>Executive Summary</a>
+        <a href="#the-problem" class="sub">The Problem</a>
+        <a href="#the-cooperative-model" class="sub">The Cooperative Model</a>
+        <a href="#why-now" class="sub">Why Now</a>
+      </div>
+      <div class="rail-group">
+        <a href="#proof-of-concept"><span class="rail-num">02</span>Proof of Concept</a>
+        <a href="#whats-live" class="sub">What's Live</a>
+        <a href="#security-audit" class="sub">Security &amp; Audit</a>
+        <a href="#financial-controls" class="sub">Financial Controls</a>
+        <a href="#compliance-kyc" class="sub">Compliance &amp; KYC</a>
+        <a href="#infrastructure-uptime" class="sub">Infrastructure &amp; Uptime</a>
+      </div>
+      <div class="rail-group">
+        <a href="#mathematical-modeling"><span class="rail-num">03</span>Mathematical Modeling</a>
+        <a href="#ownership-mechanics" class="sub">Fractional Ownership Mechanics</a>
+        <a href="#returns-yield" class="sub">Returns &amp; Yield Distribution</a>
+        <a href="#risk-model" class="sub">Risk Model</a>
+        <a href="#pool-dynamics" class="sub">Cooperative Pool Dynamics</a>
+      </div>
+      <div class="rail-group">
+        <a href="#legal-governance"><span class="rail-num">04</span>Legal &amp; Governance</a>
+        <a href="#cooperative-structure" class="sub">Cooperative Structure</a>
+        <a href="#member-rights" class="sub">Member Rights &amp; Obligations</a>
+        <a href="#regulatory-positioning" class="sub">Regulatory Positioning</a>
+        <a href="#asset-custody" class="sub">Asset Custody &amp; Title</a>
+      </div>
+      <div class="rail-group">
+        <a href="#roadmap"><span class="rail-num">05</span>Roadmap</a>
+        <a href="#current-status" class="sub">Current Status</a>
+        <a href="#whats-next" class="sub">What's Next</a>
+      </div>
+      <div class="rail-group">
+        <a href="#marketing"><span class="rail-num">06</span>Marketing</a>
+        <a href="#campaign-archive" class="sub">Campaign Archive</a>
+        <a href="#claims-proof" class="sub">Claims &amp; Their Proof</a>
+      </div>
+      <div class="rail-group">
+        <a href="#faq"><span class="rail-num">07</span>FAQ</a>
+        <a href="#glossary"><span class="rail-num">08</span>Glossary</a>
+        <a href="#contact"><span class="rail-num">09</span>Contact</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="doc-head">
+      <p class="eyebrow">Signature Private Cooperative</p>
+      <h1 class="doc-title">Investor Memorandum</h1>
+      <p class="doc-dek">A grounded account of what's built, what's proven, and what isn't yet &mdash; every material claim in this document is cited to the line of code, migration, or legal document it comes from.</p>
+      <p class="doc-meta">
+        <span>v1 &middot; 2026-09-01</span>
+        <span>Sources: fractional-platform-backend, investor-app, marketing-site</span>
+      </p>
+      <div class="how-to-read">
+        <b>How to read this.</b> A <span class="cite">file/path.rs:123</span> tag next to a claim means it's sourced directly from that line of code, migration, or legal document &mdash; you or your counsel can open it and check. Where something is asserted in marketing copy but isn't yet backed by the system itself, this document says so plainly, in place, rather than smoothing it over. That's a deliberate editorial stance carried over from the platform's own Trust &amp; Compliance page, which states its policy outright: <em class="q">&ldquo;if a control isn't real yet, it isn't listed here.&rdquo;</em>
+      </div>
+    </header>
+
+    <section class="doc-section" id="introduction">
+      <h2 class="section-title"><span class="section-num">00</span>Introduction</h2>
+      <p>Signature Private Cooperative is the trading name of Signature Private Multipurpose Cooperative Society Limited, a Nigerian cooperative society (Registration No. ABSG/MOPASP/2026/00343) that pools member capital to acquire real estate, businesses, and agricultural assets, then divides each one into units members hold directly. This document exists to answer, with evidence rather than assertion, the questions that actually decide whether a claim like that is real: does the software do what the marketing site says it does; does the money move safely; is the legal structure coherent; and where, honestly, is the platform still short of where it eventually needs to be.</p>
+      <p>Every section below either cites a specific file and line in the running system, quotes a real legal document the Society has already published, or says plainly that it couldn't find backing for a claim. Nothing here is a projection.</p>
+    </section>
+
+    <section class="doc-section" id="executive-summary">
+      <h2 class="section-title"><span class="section-num">01</span>Executive Summary</h2>
+
+      <h3 class="sub-title" id="the-problem">The Problem</h3>
+      <p>Real-asset investment in Nigeria sits at two extremes. Informal cooperative and contribution schemes (ajo/esusu-adjacent property syndicates, family land arrangements) move real money among real people but carry none of the operational rigor a member would want if their capital sat there for years &mdash; no audit trail, no independent valuation, no dispute process. At the other extreme, SEC-regulated collective investment schemes and REITs bring that rigor but are built for a different audience and a different minimum ticket size, and they structure the investor as a retail shareholder in an instrument, not as a member of a community they were personally vetted into.</p>
+      <p>Signature's own positioning, stated on its marketing site, names this gap directly: the platform is built to be <em class="q">&ldquo;real assets, not speculation&rdquo;</em> and <em class="q">&ldquo;evidence, not promises&rdquo;</em> &mdash; every asset carries an independent valuation and title documents before its allocation opens, and distributions are shown as a worked example, never a projected return <span class="cite">marketing-site/src/pages/About.tsx:24-44</span>.</p>
+
+      <h3 class="sub-title" id="the-cooperative-model">The Cooperative Model</h3>
+      <p>Signature is not structured as a fund, a brokerage, or an SEC-registered investment scheme. It is a registered cooperative society under the Nigerian Co-operative Societies Act 98 of 2004, and its own governing membership agreement is explicit about what that means for a member's legal position:</p>
+      <blockquote class="legal">
+        &ldquo;Members explicitly acknowledge that they are not &lsquo;passive retail investors&rsquo; buying &lsquo;shares.&rsquo;&hellip; Members are co-owners of cooperative capital units.&rdquo;
+        <cite>Membership Agreement, Article II.2 &mdash; crates/compliance/assets/membership_agreement_v1.md</cite>
+      </blockquote>
+      <p>Capital contributions are tracked internally as <strong>Cooperative Asset Units</strong>, not debt instruments, public equity, or deposit liabilities; what a member receives back is a <strong>Patronage Refund / Surplus Distribution</strong>, calculated from actual net performance &mdash; not a guaranteed yield <span class="cite">membership_agreement_v1.md, Article III</span>. The clearest single statement of why this structure was chosen over a securities-style one appears in the separate agreement used for unreferred applicants:</p>
+      <blockquote class="legal">
+        &ldquo;The Society is a Private Cooperative Multipurpose Society operating under applicable state/federal Cooperative Laws, and is NOT a public limited liability company, stockbroker, bank, or fund manager registered with the Securities and Exchange Commission (SEC) or the Central Bank of Nigeria (CBN).&rdquo;
+        <cite>Walk-In Agreement, Article 3.1 &mdash; crates/compliance/assets/walk_in_agreement_v1.md</cite>
+      </blockquote>
+
+      <h3 class="sub-title" id="why-now">Why Now</h3>
+      <p>The evidence gathered for this document reads as a platform past its initial build-out and into a hardening phase: recent engineering work concentrates on closing money-integrity race conditions, encrypting PII at rest, remediating dependency CVEs, and banning unsafe error-handling patterns outright &mdash; the signature of a team treating this as infrastructure that will hold real capital, not a demo (full detail in <a href="#current-status">Roadmap &middot; Current Status</a>). Combined with a compliance and financial-controls layer (dual control, AML structuring detection, DB-enforced immutable ledgers) that most platforms this size don't build until forced to, the operational case for admitting members now is that the plumbing has already been built to the standard that matters later, not one that needs retrofitting under pressure.</p>
+      <div class="callout gap">
+        <span class="callout-label">Scope note</span>
+        <p>This subsection is the one place in this document that is necessarily judgment rather than citation &mdash; market sizing, timing, and competitive framing aren't things a codebase can prove. If real market-sizing figures exist, they belong here and should be added separately.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="proof-of-concept">
+      <h2 class="section-title"><span class="section-num">02</span>Proof of Concept</h2>
+      <p class="section-dek">Five questions, answered from the actual running system: what exists end to end, how it's secured, how money is protected in motion, how identity is verified, and how the whole thing stays up. Scale, for context: 21 backend crates, 92 database migrations, 641 test functions, 179 registered API routes, a real Postgres 16 instance in CI &mdash; not a mocked one &mdash; and two automated gates blocking every pull request: <span class="cite">cargo audit</span> and a custom scanner that fails a build if a secret or personal data reaches a log line.</p>
+
+      <h3 class="sub-title" id="whats-live">What's Live</h3>
+      <p>Every domain below exists as a registered route, backed by a service layer, backed by a database schema, covered by tests &mdash; not a design mock:</p>
+      <ul class="fact-list">
+        <li><div class="dot"></div><span><strong>Authentication</strong> &mdash; registration, login, email verification, password reset, session refresh/logout, opt-in email two-factor, and biometric (WebAuthn) unlock for refresh-token exchange. <span class="cite">crates/auth, crates/auth/src/webauthn.rs:1-25</span></span></li>
+        <li><div class="dot"></div><span><strong>KYC</strong> &mdash; self-service submission and a staff review queue. <span class="cite">crates/compliance/src/service.rs:168</span></span></li>
+        <li><div class="dot"></div><span><strong>Wallets, deposits, withdrawals</strong> &mdash; full member-facing and staff-confirmation flows. <span class="cite">crates/wallets</span></span></li>
+        <li><div class="dot"></div><span><strong>Bank accounts</strong> &mdash; add/remove with OTP verification, staff-reviewed name-change requests. <span class="cite">crates/bank_accounts</span></span></li>
+        <li><div class="dot"></div><span><strong>Marketplace &amp; investments</strong> &mdash; exit windows, sell orders, buying, trade history, raise commitments. <span class="cite">crates/investments, crates/marketplace</span></span></li>
+        <li><div class="dot"></div><span><strong>Ownership &amp; holdings</strong> &mdash; member portfolio and cap-table views. <span class="cite">crates/ownership</span></span></li>
+        <li><div class="dot"></div><span><strong>Revenue distributions</strong> &mdash; staff-recorded income, dual-control approval, pro-rata payout. <span class="cite">crates/revenue</span></span></li>
+        <li><div class="dot"></div><span><strong>Governance</strong> &mdash; proposals and unit-weighted voting. <span class="cite">crates/governance</span></span></li>
+        <li><div class="dot"></div><span><strong>Documents &amp; agreements</strong> &mdash; uploads, versioning, the membership and walk-in agreements themselves. <span class="cite">crates/documents, crates/compliance</span></span></li>
+        <li><div class="dot"></div><span><strong>Staff &amp; admin tooling</strong> &mdash; user administration, platform configuration, audit-log query, analytics, member newsletters. <span class="cite">crates/admin, crates/audit, crates/analytics, crates/newsletters</span></span></li>
+        <li><div class="dot"></div><span><strong>NDPA self-service export &amp; erasure</strong> &mdash; a member can export or request deletion of their own data. <span class="cite">crates/erasure</span></span></li>
+        <li><div class="dot"></div><span><strong>Public contact &amp; provider webhooks</strong> &mdash; including the contact form this document's own research process helped fix this session. <span class="cite">crates/support, Paystack/Monnify webhooks</span></span></li>
+      </ul>
+      <div class="callout">
+        <span class="callout-label">Framing</span>
+        <p>&ldquo;Live&rdquo; here means route, service, and database schema exist and are exercised by tests &mdash; it is evidence the system works as designed, not evidence of real production transaction volume. That distinction matters and this document doesn't blur it.</p>
+      </div>
+
+      <h3 class="sub-title" id="security-audit">Security &amp; Audit</h3>
+      <p>Two facts anchor this subsection. First: the ledger and every other financially or legally significant table is immutable at the database level, not just by application convention &mdash; a Postgres trigger rejects any <code>UPDATE</code> or <code>DELETE</code> against <code>audit_logs</code>, <code>ledger_entries</code>, <code>trades</code>, <code>revenue_distributions</code>, <code>revenue_allocations</code>, <code>platform_fee_ledger</code>, <code>diligence_reviews</code>, and every legal-document/agreement table, enforced even against someone holding the raw database credentials <span class="cite">migrations/0044_immutable_ledger_tables.sql</span>. Second: the codebase carries <strong>80 comments literally labeled &ldquo;Security-audit fix&rdquo;</strong> <span class="cite">grep -rn "Security-audit fix" crates</span>, each describing a real, dated remediation &mdash; a representative sample:</p>
+      <ul class="fact-list">
+        <li><div class="dot"></div><span>Account lockout after 10 failed logins in 15 minutes, distinct from IP-based rate limiting. <span class="cite">crates/auth/src/service.rs:88-92</span> (fix M3)</span></li>
+        <li><div class="dot"></div><span>A dummy password hash is checked on every login attempt for an unknown email, closing a response-timing side channel that would otherwise reveal which emails have accounts. <span class="cite">crates/auth/src/service.rs:100-106</span></span></li>
+        <li><div class="dot"></div><span>The API docs endpoint is gated behind constant-time HTTP Basic auth and fails closed in production. <span class="cite">crates/app/src/docs_auth.rs:1-40</span> (fix M4)</span></li>
+        <li><div class="dot"></div><span>Boot-time validation rejects placeholder JWT secrets and requires the access and refresh secrets to differ and be at least 32 bytes. <span class="cite">crates/shared/src/config.rs:403-430</span> (fix L6)</span></li>
+        <li><div class="dot"></div><span>Actor attribution in the audit log is deliberately written to avoid blaming an affected member for an action staff took on their behalf. <span class="cite">crates/audit/src/repository.rs:24-50</span> (fix F-13)</span></li>
+      </ul>
+      <p>Beyond these: identity documents and bank account numbers are encrypted at rest with ChaCha20-Poly1305 (authenticated encryption, a fresh random nonce per value) <span class="cite">crates/shared/src/encryption.rs:1-80</span>; permissions are enforced through a database-backed role/permission model on every route, not scattered conditionals <span class="cite">crates/rbac</span>; every meaningful action across roughly nine crates lands in the same immutable audit log; rate limiting is IP-keyed on public routes and account-keyed on authenticated ones, aware of proxy spoofing <span class="cite">crates/app/src/rate_limit.rs</span>; and a full security-header suite (default-deny CSP, one-year HSTS, frame denial) is verified by an automated test that fails the build if any header goes missing <span class="cite">crates/app/src/security_headers.rs:64-94</span>.</p>
+      <div class="callout gap">
+        <span class="callout-label">Named, not hidden, limitation</span>
+        <p>Dual control (see <a href="#financial-controls">Financial Controls</a>) proves two different staff <em>accounts</em> approved an action. It cannot cryptographically prove two different <em>people</em> did &mdash; a single individual holding two admin-capable accounts could defeat it. The code says so directly rather than implying a stronger guarantee than it has. <span class="cite">crates/wallets/src/service.rs:799-816</span></p>
+      </div>
+      <div class="callout gap">
+        <span class="callout-label">Honest framing</span>
+        <p>These 80 fix comments are strong evidence of an active, ongoing internal review discipline &mdash; they are not, by themselves, a signed independent audit report. If Signature holds a third-party audit engagement outside this codebase, it should be cited by name alongside this evidence, not conflated with it.</p>
+      </div>
+
+      <h3 class="sub-title" id="financial-controls">Financial Controls</h3>
+      <p>Every deposit, withdrawal, marketplace order, and revenue distribution accepts an idempotency key, so a retried or double-submitted request is deduplicated rather than double-processed <span class="cite">crates/wallets/src/service.rs:38</span>. Withdrawal confirmation uses a compare-and-swap claim: the request atomically moves from <code>pending</code> to <code>processing</code>, and only the caller that wins that transition actually calls the payment provider &mdash; the loser is told the request is already being handled, never allowed to submit it a second time <span class="cite">crates/wallets/src/service.rs:824-838</span>. When a payout's outcome is genuinely unclear after a network failure, the system asks the provider what actually happened rather than guessing, and leaves the request for staff review if the answer is still ambiguous &mdash; deliberately avoiding both a false failure and a double-payment <span class="cite">crates/wallets/src/service.rs:864-949</span>.</p>
+      <p>Deposit webhooks from Paystack and Monnify are verified twice before a wallet is ever credited: first the HMAC signature over the raw request body, then an independent re-confirmation against the provider's own verify API &mdash; the payload itself is never trusted on its own <span class="cite">crates/wallets/src/api.rs:443-514, 477-480</span>. A reconciliation job runs every fifteen minutes comparing the internal ledger against the real balance held at the live payment gateway, and only escalates a discrepancy to staff after it has persisted across three consecutive runs, so ordinary settlement lag doesn't trigger false alarms <span class="cite">crates/wallets/src/reconciliation.rs:72-79</span>.</p>
+      <div class="callout gap">
+        <span class="callout-label">Precision, not overclaim</span>
+        <p>Which payment rail is live &mdash; manual bank transfer, Paystack, or Monnify &mdash; is a staff-editable configuration value, not a fixed architectural choice. The database is currently seeded to Monnify <span class="cite">migrations/0067_active_payment_provider.sql:6-14</span>, which supports describing payment rails as genuinely live today, but this is an operational fact worth re-confirming per environment, not a permanent guarantee. A misconfigured deployment silently falls back to manual bookkeeping rather than failing loudly.</p>
+      </div>
+
+      <h3 class="sub-title" id="compliance-kyc">Compliance &amp; KYC</h3>
+      <p>KYC auto-approves only when three independent conditions all hold: a verification provider is configured, a real-time National Identification Number (NIN) lookup succeeds and that NIN isn't already claimed by another account, and the verified legal name plausibly matches the applicant's account name. If any one of those fails, the submission is left <code>Pending</code> for a staff reviewer &mdash; it never auto-rejects <span class="cite">crates/compliance/src/service.rs:151-249</span>. A member's self-declared status as a Politically Exposed Person routes directly into a real staff AML review queue rather than a form field nobody reads <span class="cite">crates/compliance/src/aml.rs:26-38</span>, and a separate, config-tunable structuring-detection job watches for the deposit pattern regulators associate with money laundering (many small deposits under a threshold in a rolling window) and flags it for review, race-safe under concurrent writes <span class="cite">crates/compliance/src/aml.rs</span>.</p>
+      <div class="callout gap">
+        <span class="callout-label">Unverified integration detail</span>
+        <p>NIN verification calls Monnify's identity-lookup API against Nigeria's NIMC database, and the code's own comment is direct about a limitation: the exact shape of a successful response beyond one confirmed field is documented as <em class="q">&ldquo;a best guess&hellip; not confirmed against a real response as of writing.&rdquo;</em> <span class="cite">crates/compliance/src/monnify.rs:4-16</span> This should be confirmed against real production traffic before being cited elsewhere as a fully verified integration.</p>
+      </div>
+
+      <h3 class="sub-title" id="infrastructure-uptime">Infrastructure &amp; Uptime</h3>
+      <p>The container runs as a non-root user from a multi-stage build, with a health check baked into the image itself <span class="cite">Dockerfile:1-41</span>. Two health endpoints exist for different purposes: <span class="cite">/health</span> is a plain liveness check, and <span class="cite">/health/ready</span> runs a real query against Postgres, letting a load balancer drain traffic during a database outage rather than restarting a healthy process <span class="cite">crates/app/src/main.rs:2864-2877</span>. The production container itself runs with a read-only root filesystem, every Linux capability dropped, and its port bound to loopback only, implying a reverse proxy in front <span class="cite">docker-compose.backend.yml:1-23</span>. Error monitoring (Sentry) is opt-in via an environment variable, paired deliberately with the log-safety scanner mentioned above, since enabling it means log lines now reach infrastructure outside the company's own servers.</p>
+      <div class="callout">
+        <span class="callout-label">Precision, not overclaim</span>
+        <p>Production deployment is a deliberate, manually-triggered promotion &mdash; not deployment on every merge. CI (formatting, linting, the full test suite against a real database, dependency-vulnerability scanning, log-safety scanning) runs on every pull request; going live is a separate, one-click, human-triggered action that polls the new container's health before declaring success. That's a controlled-release posture, arguably a better trust story than full continuous deployment &mdash; but it should be described accurately as that, not as &ldquo;automated CI/CD.&rdquo;</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="mathematical-modeling">
+      <h2 class="section-title"><span class="section-num">03</span>Mathematical Modeling</h2>
+      <p class="section-dek">The actual arithmetic the platform runs on &mdash; shown, not just described, since a document about proof shouldn't ask a reader to take formulas on faith either.</p>
+
+      <h3 class="sub-title" id="ownership-mechanics">Fractional Ownership Mechanics</h3>
+      <p>Every asset carries a database-checked invariant tying its total valuation to its units:</p>
+      <div class="formula"><span class="c">// crates/assets/src/domain.rs:171-175, DB-checked</span><br><span class="k">total_valuation_minor</span> = total_units &times; unit_price_minor</div>
+      <p>An asset moves through a strict lifecycle &mdash; <span class="cite">Draft &rarr; UnderReview &rarr; Listed &rarr; Funded &rarr; Closed</span> &mdash; governed by a single transition table rather than scattered status checks, and the move from <span class="cite">Listed</span> to <span class="cite">Funded</span> fires automatically the moment a raise fills <span class="cite">crates/assets/src/domain.rs:47-138</span>. Committing capital converts it to units through a service call that is KYC-gated, requires at least one unit, and blocks an asset's own creator from investing in their own raise <span class="cite">crates/investments/src/service.rs:62-192</span>. Two guards are enforced at the database transaction level, not just in application code:</p>
+      <ul class="fact-list">
+        <li><div class="dot"></div><span><strong>Oversubscription is structurally impossible</strong> &mdash; the commit is an atomic conditional update (<span class="cite">WHERE units_committed + $1 &lt;= total_units</span>) under a row lock, so two concurrent commitments can never together oversell an asset. <span class="cite">crates/investments/src/repository.rs:174-187</span></span></li>
+        <li><div class="dot"></div><span><strong>A per-member ownership cap</strong> is checked both before the commit and again inside the locked transaction, closing the race a pre-check alone would leave open &mdash; full consolidation of an asset by one member through ordinary trading is, by design, unreachable. <span class="cite">crates/ownership/src/cap.rs:12-45</span></span></li>
+      </ul>
+      <div class="callout gap">
+        <span class="callout-label">Named limit</span>
+        <p>A raise is strictly all-or-nothing: it only converts to holdings once <span class="cite">units_committed == total_units</span> exactly <span class="cite">crates/investments/src/repository.rs:323</span>. There is no partial or minimum-viable-raise threshold anywhere in the code today.</p>
+      </div>
+
+      <h3 class="sub-title" id="returns-yield">Returns &amp; Yield Distribution</h3>
+      <p>Pro-rata payout uses the <strong>largest-remainder method</strong>: each holder first receives the floor of their proportional share, computed in 128-bit intermediate arithmetic to avoid overflow, and the handful of leftover minor units left over from flooring are handed out one each to the holders with the largest fractional remainders &mdash; guaranteeing the total paid out sums exactly to the pool, never a kobo over or under, verified by an assertion at both the calculation and the write site <span class="cite">crates/revenue/src/allocation.rs:1-67, crates/revenue/src/repository.rs:546-550</span>. The pool itself is computed before that split:</p>
+      <div class="formula"><span class="c">// crates/revenue/src/repository.rs:537-539</span><br><span class="k">holder_pool_minor</span> = total_amount_minor &minus; platform_fee_minor &minus; vat_minor &minus; wht_minor</div>
+      <p>Fee, VAT, and withholding-tax rates are staff-configured percentages, capped so their combined total can never exceed 100% <span class="cite">crates/revenue/src/service.rs:175-179</span>. Distributions tied to an asset sale instead apply capital-gains tax to each holder's own individual profit, never a flat fee &mdash; the two mechanisms are mutually exclusive per distribution <span class="cite">crates/revenue/src/service.rs:153-185</span>. Wallet crediting happens synchronously, in the same database transaction as the distribution itself, and above a configurable threshold the distribution requires a second, different staff approver before it can execute at all &mdash; the same dual-control pattern used for withdrawals <span class="cite">crates/revenue/src/service.rs:415-521</span>.</p>
+      <div class="callout gap">
+        <span class="callout-label">Marketing example doesn't match the real arithmetic</span>
+        <p>The homepage's own worked example &mdash; &ldquo;an asset earns &#8358;500,000 in rent, you hold 10 of 200 units (5%), you receive &#8358;25,000&rdquo; &mdash; runs a clean straight percentage of the <em>gross</em> amount <span class="cite">marketing-site/src/pages/Home.tsx:511-515</span>. In reality, platform fee, VAT, and withholding tax are deducted from the gross <em>before</em> the pro-rata split, so a member's real share is computed off a smaller net pool. The page's existing disclaimer covers performance variability, not this specific gap. Worth fixing in the marketing copy directly &mdash; see <a href="#claims-proof">Claims &amp; Their Proof</a>.</p>
+      </div>
+      <div class="callout gap">
+        <span class="callout-label">Precision on &ldquo;automatically&rdquo;</span>
+        <p>The marketing site's use of &ldquo;automatically&rdquo; describes the wallet-crediting mechanics &mdash; instant, same-transaction &mdash; not an automatic trigger the moment revenue is collected. Distribution itself is a deliberate action a staff member takes, gated by permission and, above a threshold, a second approver.</p>
+      </div>
+
+      <h3 class="sub-title" id="risk-model">Risk Model</h3>
+      <p>Assets carry real risk-disclosure fields &mdash; a risk level, a plain-language key-risk summary, valuer name/date/methodology, and outstanding-debt disclosure &mdash; added deliberately, each defaulting to an honest &ldquo;not yet assessed&rdquo; state rather than a silent default <span class="cite">crates/assets/src/domain.rs:214-223</span>. The member-facing UI reflects that honesty directly: when no risk summary has been published, it says so (&ldquo;Risk not yet assessed&rdquo;) instead of hiding the field or inventing one <span class="cite">investor-app/src/pages/AssetDetail.tsx:275-291</span>.</p>
+      <div class="callout gap">
+        <span class="callout-label">Real, current gap</span>
+        <p>There is no whole-asset write-down, impairment, or negative-distribution mechanism in the system today &mdash; a distribution must always be a positive amount <span class="cite">crates/revenue/src/service.rs:96-100</span>. The only signed-loss concept that exists is a realized loss on an individual secondary-market trade, where capital-gains tax is floored at zero but a seller's own profit figure can be negative <span class="cite">crates/marketplace/src/domain.rs:91-93</span>. If an asset's value genuinely falls, the model has no built-in way to reflect that to holders yet. This is a real product limitation, not a documentation gap, and this document names it as one.</p>
+      </div>
+
+      <h3 class="sub-title" id="pool-dynamics">Cooperative Pool Dynamics</h3>
+      <p>Staff can cancel an entire raise, which atomically refunds every committed member in one transaction <span class="cite">crates/investments/src/service.rs:211-250</span>; an individual member can independently cancel their own still-open commitment before the raise fills, closed off the moment it does <span class="cite">crates/investments/src/service.rs:257-284</span>. Secondary trading happens only inside staff-opened exit windows, never continuously &mdash; a sell order escrows the seller's units the moment it's placed, and a trade settles buyer, seller, units, and money together in one atomic step or not at all <span class="cite">crates/marketplace/src/domain.rs:6-46</span>. Three further guards, all staff-configurable: a holder lock-in period before newly-acquired units can be resold (present in code, disabled by default) <span class="cite">crates/marketplace/src/service.rs:203-220,432</span>; a looser secondary-market ownership cap reusing the same concentration-limit logic as the raise-time cap <span class="cite">crates/marketplace/src/service.rs:301-311</span>; and a price-ceiling guard bounding how far above the raise or last-trade price a sell order can be listed <span class="cite">crates/marketplace/src/service.rs:444-451</span>.</p>
+      <p>The dual-control threshold pattern used for withdrawals reappears, deliberately reused rather than reinvented, for revenue-entry approval &mdash; the two implementations explicitly cross-reference each other in their own code comments <span class="cite">crates/wallets/src/service.rs:349,708-814, crates/revenue/src/service.rs:415-476</span>, a small but real signal this was designed as one system rather than patched feature by feature.</p>
+    </section>
+
+    <section class="doc-section" id="legal-governance">
+      <h2 class="section-title"><span class="section-num">04</span>Legal &amp; Governance</h2>
+      <p class="section-dek">This section touches real legal exposure directly, so it stays strictly to what the actual governing documents and code say &mdash; and names plainly what would need separate counsel review rather than asserting it.</p>
+
+      <h3 class="sub-title" id="cooperative-structure">Cooperative Structure</h3>
+      <p>Admission is by referral or Board sponsorship only, and the Board holds <em class="q">&ldquo;absolute, non-appealable discretion&rdquo;</em> over acceptance <span class="cite">membership_agreement_v1.md, Article I</span>. The agreement itself isn't a hardcoded copy baked into the frontend &mdash; it's server-generated text, content-hashed with SHA-256 at the time a member accepts it, and that hash is never accepted as a client-supplied value <span class="cite">crates/compliance/src/membership_agreement.rs:11-20</span>, so what a member sees and what's recorded as accepted are provably the same text. A mandatory asset-specific lock-up applies to every contribution &mdash; <em class="q">&ldquo;early redemption or liquidation requests are not permitted&rdquo;</em> &mdash; the legal counterpart to the marketplace's own lock-in configuration <span class="cite">membership_agreement_v1.md, Article V.1</span>.</p>
+      <p>A separate <strong>Walk-In Agreement</strong> governs applicants who arrive without a personal referrer: it grants only Provisional Candidate Status, explicitly not automatic admission, and bars any financial transaction during candidacy until the Society's Executive Desk / Board of Trustees formally sponsors them <span class="cite">walk_in_agreement_v1.md, Article 2</span>.</p>
+
+      <h3 class="sub-title" id="member-rights">Member Rights &amp; Obligations</h3>
+      <p>Beyond the transfer and lock-up terms above, the agreement carries broad indemnification of the Society, its trustees, and developers, with a member's own liability capped at twelve months of their own admin fees paid <span class="cite">membership_agreement_v1.md, Article VI</span>; disputes route through internal Board review, then binding arbitration under Co-operative Societies Law or the Lagos Court of Arbitration's rules <span class="cite">Article VII</span>.</p>
+      <p>The strongest concrete evidence of real member power sits in the governance system, not the legal text alone: a proposal to sell an asset must actually pass a quorum-then-majority, unit-weighted vote &mdash; with each vote snapshotted at cast time so a later trade can't retroactively shift the outcome &mdash; before staff can even record the resulting sale proceeds as revenue <span class="cite">crates/governance/src/domain.rs:105-128, crates/revenue/src/service.rs:356-389</span>. That's a structural gate on asset disposal, not an advisory poll.</p>
+
+      <h3 class="sub-title" id="regulatory-positioning">Regulatory Positioning (Nigeria)</h3>
+      <p>The Society's position is stated identically and directly in two places &mdash; a governing legal document and the public marketing site:</p>
+      <blockquote class="legal">
+        &ldquo;This platform is a proprietary administrative interface operating exclusively for registered members of Signature Private Multipurpose Cooperative Society Limited, registered under the Nigerian Co-operative Societies Act 98 of 2004 (Registration No. ABSG/MOPASP/2026/00343). We do not solicit funds from the general public, issue securities, or offer investment advisory services.&rdquo;
+        <cite>marketing-site/src/pages/Trust.tsx:67-76</cite>
+      </blockquote>
+      <p>The Nigeria Data Protection Act is cited substantively in the Society's privacy policy &mdash; both a retention-disclosure obligation and the concrete data-subject rights it grants (access, correction, deletion, objection, portability) <span class="cite">crates/compliance/assets/privacy_policy_v1.md:77,85</span>, and those rights aren't just stated: the self-service export and erasure endpoints referenced in <a href="#compliance-kyc">Compliance &amp; KYC</a> operationalize them directly.</p>
+      <div class="callout gap">
+        <span class="callout-label">Sourcing gap</span>
+        <p>No citation to the Companies and Allied Matters Act (CAMA) appears anywhere in the codebase, migrations, or legal documents reviewed for this report. If a CAMA-specific compliance claim is ever needed, it requires separate legal sourcing &mdash; nothing here backs it, and nothing here should be read as implying it.</p>
+      </div>
+
+      <h3 class="sub-title" id="asset-custody">Asset Custody &amp; Title</h3>
+      <p>The trust structure is embedded in a real generated legal artifact, not just marketing prose. Every Certificate of Unit Ownership PDF a member can download carries a hardcoded trust statement:</p>
+      <blockquote class="legal">
+        &ldquo;The underlying asset is held in trust by Signature Private Multipurpose Cooperative Society Limited (Reg. No. ABSG/MOPASP/2026/00343) as trustee for the members who capitalized it, in proportion to their Cooperative Asset Units.&rdquo;
+        <cite>crates/ownership/src/certificate.rs:74-80, rendered on every certificate at :334-346</cite>
+      </blockquote>
+      <p>&mdash; alongside an explicit disclaimer that the certificate is not itself a title deed. A member only ever receives an actual title-deed-class document if they consolidate 100% of a single asset's units, gated by a direct equality check between units held and total units outstanding <span class="cite">crates/ownership/src/service.rs:127-160</span>; for the platform's actual fractional product, this Certificate plus its trust statement is the only title-adjacent document any member ever gets &mdash; which matches what the marketing site says precisely.</p>
+      <div class="callout gap">
+        <span class="callout-label">Real, worth-understanding nuance</span>
+        <p>The database does not model &ldquo;the Society&rdquo; as a distinct legal titleholder entity. An asset's <span class="cite">owner_id</span> points to an individual staff/deal-originator's profile, not a dedicated trust-deed or legal-entity record &mdash; the code's own comments note an earlier feature that could have represented the Society as an entity was retired <span class="cite">crates/assets/src/domain.rs:28-41</span>. In practice this is normal: real trusts are usually a paper/registry fact, not something every system needs a database row for. But the trustee claim currently rests entirely on consistent process and generated document text, not on a first-class data record proving it &mdash; the document shouldn't overclaim &ldquo;database-enforced trust structure,&rdquo; and doesn't.</p>
+      </div>
+      <div class="callout error">
+        <span class="callout-label">Factual discrepancy &mdash; worth resolving directly</span>
+        <p>The Society's registered address as stated in its own binding Membership Agreement is <em class="q">&ldquo;No. 58 Macaulay by Ikot Ekpene Road&hellip;&rdquo;</em> <span class="cite">membership_agreement_v1.md, Article Recitals</span>. Every public-facing surface &mdash; the marketing site's Contact page, its structured data, and <span class="cite">config.ts</span> &mdash; instead says <em class="q">&ldquo;No. 68 Macaulay&hellip;&rdquo;</em> <span class="cite">marketing-site/src/pages/Contact.tsx:91, src/config.ts:18</span>. One of these two numbers is wrong. This is exactly the kind of small, checkable inconsistency worth fixing before this document (or the legal document itself) goes in front of anyone external.</p>
+      </div>
+      <p>Article 5.2 of the Membership Agreement describes unit transfers as Board-approval-gated, member-to-member only, with a written notice and admin fee. The actual marketplace implementation is an automated, intra-Society exit-window market instead &mdash; the same policy intent (transfers stay inside the membership) is preserved, but the mechanism described in the legal text and the mechanism actually running are not identical. Both should be described accurately going forward rather than treated as interchangeable.</p>
+    </section>
+
+    <section class="doc-section" id="roadmap">
+      <h2 class="section-title"><span class="section-num">05</span>Roadmap</h2>
+
+      <h3 class="sub-title" id="current-status">Current Status</h3>
+      <p>Payment rails follow a deliberately conservative rollout: Paystack is fully wired (hosted checkout, dual-control payout, webhook verification, live balance reconciliation); Monnify is the currently active provider per the live database configuration; Flutterwave has no implementation yet; manual (staff-confirmed bank transfer) remains the safe fallback any misconfiguration lands on. A genuinely sophisticated, staff-tunable operations layer is already live and not just planned &mdash; AML structuring-detection thresholds, dual-control thresholds for both withdrawals and revenue entries, per-member ownership caps on both raises and marketplace trades, and separate VAT/CGT/withholding-tax rates are all configuration values a staff member can change without a deploy <span class="cite">crates/admin/src/config_service.rs</span>.</p>
+      <p>The shape of recent engineering work across all three repositories reads as a genuine post-launch hardening phase, not early build-out: closing money-integrity race conditions in ownership caps and withdrawal/revenue processing, encrypting bank account numbers at rest, banning unchecked error-unwrapping outright via a compiler lint, and remediating a dependency CVE. There is no informal TODO backlog scattered through the code &mdash; what remains unfinished is documented formally, in the backend's own README and in doc comments, which is itself a signal of discipline worth noting.</p>
+
+      <h3 class="sub-title" id="whats-next">What's Next</h3>
+      <p>Taken directly from the backend's own documented list of known gaps, rather than reconstructed from outside:</p>
+      <ul class="fact-list">
+        <li><div class="dot"></div><span>API documentation currently covers 49 of 133 routes; the rest (assets, governance, documents, admin, analytics, notifications, audit, revenue) aren't yet annotated.</span></li>
+        <li><div class="dot"></div><span>The internal event bus is in-process only; a durable transport (e.g. Kafka or NATS) is the planned replacement once that guarantee needs to become absolute.</span></li>
+        <li><div class="dot"></div><span>Exit windows and governance proposals are opened and closed manually by staff &mdash; the scheduling infrastructure for deadline-driven auto-close exists, but isn't wired up yet.</span></li>
+        <li><div class="dot"></div><span>Holder lock-in is implemented but ships disabled by default (zero days).</span></li>
+        <li><div class="dot"></div><span>Automatic refund on a raise that times out unfilled needs a background job scheduler and is explicitly deferred; a manual staff cancel is today's workaround.</span></li>
+        <li><div class="dot"></div><span>No Flutterwave integration yet.</span></li>
+      </ul>
+      <div class="callout gap">
+        <span class="callout-label">Scope note</span>
+        <p>This captures what the code itself signals is unfinished. Any forward-looking business roadmap beyond this &mdash; new asset classes, timelines, features not yet started in code &mdash; needs to come from the team directly; nothing here should be read as inventing one.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="marketing">
+      <h2 class="section-title"><span class="section-num">06</span>Marketing</h2>
+
+      <h3 class="sub-title" id="campaign-archive">Campaign Archive</h3>
+      <div class="callout gap">
+        <span class="callout-label">Placeholder &mdash; nothing to cite yet</span>
+        <p>No press kit, ad copy, or social-content archive exists in any of the three repositories researched for this document &mdash; this was confirmed by search, not left unchecked. The one adjacent live capability is the member newsletter system (segmented sends, an automated &ldquo;almost funded&rdquo; nudge job), but its actual sent history lives only in the production database, not in source control. Real past campaign material &mdash; screenshots, links, copy &mdash; belongs here once supplied.</p>
+      </div>
+
+      <h3 class="sub-title" id="claims-proof">Claims &amp; Their Proof</h3>
+      <p>Signature's own Trust &amp; Compliance page already states an editorial policy this document extends rather than invents: <em class="q">&ldquo;Every claim on this page describes exactly how the platform is built, not aspirational policy. If a control isn't real yet, it isn't listed here,&rdquo;</em> closing with <em class="q">&ldquo;Every control above is live today, not a roadmap.&rdquo;</em> <span class="cite">marketing-site/src/pages/Trust.tsx:64,103</span> The table below is that policy applied as a checklist &mdash; every material public claim, its verification status, and where that status comes from.</p>
+      <div style="overflow-x:auto;">
+      <table class="claims-table">
+        <thead><tr><th>Claim</th><th>Status</th><th>Evidence</th></tr></thead>
+        <tbody>
+          <tr><td>Every transaction is on an append-only ledger, reconciling to the kobo</td><td><span class="pill ok">Confirmed</span></td><td>DB trigger blocks mutation <span class="cite">migrations/0044</span></td></tr>
+          <tr><td>Overdrafts and oversubscription are structurally impossible</td><td><span class="pill ok">Confirmed</span></td><td>Atomic conditional updates, row-locked <span class="cite">investments/repository.rs:174-187</span></td></tr>
+          <tr><td>Funds only ever leave to the same verified identity</td><td><span class="pill ok">Confirmed</span></td><td>KYC-gated withdrawal path <span class="cite">crates/compliance</span></td></tr>
+          <tr><td>Identity documents encrypted at rest, masked everywhere shown</td><td><span class="pill ok">Confirmed</span></td><td>ChaCha20-Poly1305 AEAD <span class="cite">shared/src/encryption.rs</span></td></tr>
+          <tr><td>Assets held in trust, independently valued before allocation opens</td><td><span class="pill nuance">Confirmed, with nuance</span></td><td>Real generated trust-statement text; no distinct legal-entity DB record &mdash; see <a href="#asset-custody">Asset Custody</a></td></tr>
+          <tr><td>Escrow-based marketplace, atomic buyer-to-seller settlement</td><td><span class="pill ok">Confirmed</span></td><td><span class="cite">marketplace/src/domain.rs:6-46</span></td></tr>
+          <tr><td>&#8358;500,000 rent &rarr; 5% held &rarr; &#8358;25,000 received, automatically</td><td><span class="pill nuance">Confirmed, with nuance</span></td><td>Real math, but omits real fee/VAT/WHT withholding &mdash; see <a href="#returns-yield">Returns &amp; Yield</a></td></tr>
+          <tr><td>NIN verification via Monnify (government ID check)</td><td><span class="pill nuance">Confirmed, with nuance</span></td><td>Real integration; response schema unconfirmed against live payload &mdash; see <a href="#compliance-kyc">Compliance &amp; KYC</a></td></tr>
+          <tr><td>Not a public company, stockbroker, bank, or SEC/CBN-registered fund manager</td><td><span class="pill ok">Confirmed</span></td><td><span class="cite">walk_in_agreement_v1.md, Art. 3.1</span></td></tr>
+          <tr><td>Registered address, No. 68 Macaulay&hellip;</td><td><span class="pill gap">Discrepancy found</span></td><td>Membership Agreement itself says No. 58 &mdash; see <a href="#asset-custody">Asset Custody</a></td></tr>
+          <tr><td>Whole-asset value can be written down if it underperforms</td><td><span class="pill gap">Not yet built</span></td><td>No mechanism exists &mdash; see <a href="#risk-model">Risk Model</a></td></tr>
+        </tbody>
+      </table>
+      </div>
+      <h3 class="sub-title">The published fee schedule</h3>
+      <p>Reproduced from Pricing.tsx and cross-checked against the live <span class="cite">platform_config</span> values it should match:</p>
+      <table class="fee-table">
+        <tr><td>Membership, custody, or investing</td><td>0%</td></tr>
+        <tr><td>Exit profit fee</td><td>Percentage of profit only &mdash; a loss owes nothing</td></tr>
+        <tr><td>Marketplace transfer fee (seller-paid)</td><td>1%, flat</td></tr>
+        <tr><td>Deposits (bank transfer)</td><td>Free</td></tr>
+        <tr><td>Withdrawals</td><td>&#8358;100 flat</td></tr>
+        <tr><td>Revenue distribution platform fee</td><td>5%, withheld before pro-rata split</td></tr>
+        <tr><td>Governance voting, statements, documents</td><td>Free</td></tr>
+      </table>
+    </section>
+
+    <section class="doc-section" id="faq">
+      <h2 class="section-title"><span class="section-num">07</span>FAQ</h2>
+      <p class="section-dek">Reproduced from the platform's own live FAQ page, which already carries structured data for search &mdash; extended only where this deeper document answers something the public page doesn't need to.</p>
+      <div class="faq-item"><p class="faq-q">Who can become a member?</p><p class="faq-a">Membership is by referral only, from an existing KYC-verified member or staff. There's no public signup, and referring someone in earns no commission.</p></div>
+      <div class="faq-item"><p class="faq-q">What's the minimum to start?</p><p class="faq-a">There's no fixed minimum &mdash; unit prices vary by asset, and how much capital you commit is simply however many units you choose above that per-unit price.</p></div>
+      <div class="faq-item"><p class="faq-q">How does holding units actually work?</p><p class="faq-a">Two ways: revenue distribution when the asset earns (rent, business income, harvest), split pro-rata per the cooperative's bylaws; and resale gain or loss if you sell your units in a scheduled exit window.</p></div>
+      <div class="faq-item"><p class="faq-q">Can I exit whenever I want?</p><p class="faq-a">No. Liquidity is deliberately bounded to scheduled exit windows rather than pretending a real, illiquid asset trades like a listed stock minute to minute.</p></div>
+      <div class="faq-item"><p class="faq-q">Is my money safe while it sits in my wallet?</p><p class="faq-a">It sits on an audited, append-only ledger that reconciles exactly, and can only ever be withdrawn to your own verified bank account.</p></div>
+      <div class="faq-item"><p class="faq-q">What happens if an allocation doesn't fill?</p><p class="faq-a">Every committed member is refunded automatically and in full &mdash; there is no minimum-raise threshold below which the platform proceeds anyway.</p></div>
+      <div class="faq-item"><p class="faq-q">Do I get a say in the assets I own?</p><p class="faq-a">Yes &mdash; governance votes weighted by the units you hold in that specific asset, and for a sale proposal specifically, that vote is a real gate: staff cannot record sale proceeds until it passes.</p></div>
+      <div class="faq-item"><p class="faq-q">Who holds the actual asset?</p><p class="faq-a">Signature Private Multipurpose Cooperative Society Limited, as trustee for the members who capitalized it &mdash; not any individual member, and not the platform operator personally.</p></div>
+      <div class="faq-item"><p class="faq-q">Do I get a Certificate of Ownership or a Title Deed?</p><p class="faq-a">You get a personal Certificate of Unit Ownership recording your units, acquisition date, and cost basis &mdash; it is explicitly not a title deed. A literal title-deed-class document is only ever issued if you consolidate 100% of one asset's units.</p></div>
+    </section>
+
+    <section class="doc-section" id="glossary">
+      <h2 class="section-title"><span class="section-num">08</span>Glossary</h2>
+      <div class="glossary-item"><p class="glossary-term">Cooperative / Society</p><p class="glossary-def">Signature Private Cooperative is the trading name of Signature Private Multipurpose Cooperative Society Limited, registered under the Nigerian Co-operative Societies Act 98 of 2004. A cooperative society, not a fund or a brokerage.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Unit</p><p class="glossary-def">The fractional ownership instrument. An asset is divided into a fixed number of units at a fixed, server-computed price.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Holding</p><p class="glossary-def">One line of a member's portfolio &mdash; their position in one asset: units held, the current market-anchor price, and their own real weighted-average cost basis.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Raise</p><p class="glossary-def">The fundraising/allocation period for one asset. Ends when the last unit is committed (all-or-nothing) or when staff cancel it, refunding everyone.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Exit window</p><p class="glossary-def">A staff-opened, time-bounded secondary-market window in which members may list units for sale. Outside a window, there is no trading.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Pro-rata distribution</p><p class="glossary-def">Revenue split proportionally to units held, net of platform fee/VAT/WHT, using the largest-remainder method so the total paid always sums exactly.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Certificate of Unit Ownership</p><p class="glossary-def">A personal record of units held, acquisition date, and cost basis in an asset &mdash; not a title deed.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Trust / trustee</p><p class="glossary-def">Signature holds legal title to each real asset as trustee for the members who capitalized it; a member's claim is a beneficial interest under that trust, not direct title.</p></div>
+      <div class="glossary-item"><p class="glossary-term">KYC (Know Your Customer)</p><p class="glossary-def">Identity verification required before a member can contribute capital or withdraw. Deposits are allowed before approval; moving money isn't.</p></div>
+      <div class="glossary-item"><p class="glossary-term">PEP (Politically Exposed Person)</p><p class="glossary-def">Self-declared at KYC submission. Never auto-rejects a member &mdash; it gives staff something concrete to weigh at review.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Dual control</p><p class="glossary-def">Above a configurable amount, a second, different staff member must independently approve a withdrawal or revenue entry before it executes.</p></div>
+      <div class="glossary-item"><p class="glossary-term">Walk-in candidate / Walk-in agreement</p><p class="glossary-def">A separate legal document and status for applicants admitted without a personal referrer &mdash; provisional only, sponsored by the Board directly, not automatic admission.</p></div>
+      <div class="glossary-item"><p class="glossary-term">General admission code</p><p class="glossary-def">A non-personal, server-owned referral code staff can issue for the walk-in path, distinct from a member's own individual invite code.</p></div>
+    </section>
+
+    <section class="doc-section" id="contact">
+      <h2 class="section-title"><span class="section-num">09</span>Contact</h2>
+      <p><a href="mailto:help@signatureprivatecoop.com">help@signatureprivatecoop.com</a> &middot; <a href="tel:+2347047453529">0704 745 3529</a></p>
+      <p style="color:var(--text-secondary);">No. 68 Macaulay by Ikot Ekpene Road, First Floor, Methodist Shopping Plaza, Umuahia North LGA, Abia State, Nigeria<br>Mon&ndash;Fri &middot; 9:00&ndash;17:00 WAT</p>
+      <p style="font-size:13.5px; color:var(--text-muted);">(See the address discrepancy flagged under <a href="#asset-custody">Asset Custody &amp; Title</a> before treating this number as final.) The site's contact form now delivers to this inbox through a real backend endpoint, not a client-side email-app handoff.</p>
+    </section>
+
+    <footer class="doc-foot">
+      <p><strong>Follow-up items surfaced by this research, not resolved within this document itself:</strong></p>
+      <ol class="followup-list">
+        <li>The Membership Agreement's registered address ("No. 58") and every public-facing surface ("No. 68") disagree by one digit &mdash; resolve which is correct.</li>
+        <li>The homepage's revenue worked example doesn't reflect real fee/VAT/WHT withholding &mdash; worth fixing in the marketing copy directly.</li>
+        <li>NIN-verification response parsing needs confirming against a real production payload before being cited elsewhere as fully verified.</li>
+        <li>No CAMA-specific citation exists anywhere in the codebase or legal documents &mdash; needs separate legal sourcing if ever required.</li>
+        <li>A recent commit titled "Pause deposits" was spotted during this research &mdash; worth confirming current actual status directly rather than assuming from a commit message.</li>
+      </ol>
+      <p style="margin-top:2rem;">Compiled from direct review of the fractional-platform-backend, investor-app, and marketing-site repositories. Every citation above points to a real file, line, or legal document as of the date on this page.</p>
+    </footer>
+  </main>
+</div>
