@@ -40,6 +40,7 @@
   }
 
   * { box-sizing: border-box; }
+  @view-transition { navigation: auto; }
   html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--bg); color: var(--text);
@@ -241,6 +242,31 @@
     document.querySelectorAll('.rail nav a').forEach(function (a) {
       a.addEventListener('click', closeMenu);
     });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var subLinks = Array.prototype.slice.call(document.querySelectorAll('.rail a.sub'));
+    var pairs = subLinks.map(function (a) {
+      var id = a.getAttribute('href').split('#')[1];
+      return { link: a, heading: id ? document.getElementById(id) : null };
+    }).filter(function (p) { return p.heading; });
+    if (!('IntersectionObserver' in window) || pairs.length === 0) return;
+    var current = null;
+    function setActive(link) {
+      if (current === link) return;
+      subLinks.forEach(function (a) { a.classList.remove('active'); });
+      if (link) link.classList.add('active');
+      current = link;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      var visible = entries.filter(function (e) { return e.isIntersecting; });
+      if (visible.length === 0) return;
+      visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+      var match = pairs.filter(function (p) { return p.heading === visible[0].target; })[0];
+      if (match) setActive(match.link);
+    }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+    pairs.forEach(function (p) { observer.observe(p.heading); });
   });
 </script>
 
