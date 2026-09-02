@@ -186,19 +186,36 @@
 
   footer.doc-foot { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
 
-  .mobile-toc-toggle { display: none; }
+  .menu-toggle { display: none; }
+  .rail-close { display: none; }
+  .rail-backdrop { display: none; border: none; padding: 0; }
+  body.menu-open { overflow: hidden; }
 
   @media (max-width: 980px) {
     .shell { grid-template-columns: 1fr; }
-    .rail { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 1.4rem; }
-    .rail nav { display: none; }
-    .rail.open nav { display: flex; }
-    .mobile-toc-toggle {
-      display: flex; align-items: center; justify-content: space-between; width: 100%;
-      background: none; border: 1px solid var(--border); border-radius: 8px; padding: 0.6rem 0.9rem;
-      font-family: var(--body); font-size: 13.5px; color: var(--text); cursor: pointer;
+    .menu-toggle {
+      display: flex; align-items: center; justify-content: center;
+      position: fixed; top: 1rem; left: 1rem; z-index: 40;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--surface); box-shadow: var(--shadow); color: var(--text); cursor: pointer; padding: 0;
     }
-    .main { padding: 2.2rem 1.4rem 5rem; }
+    .rail-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(13,27,42,0.45); z-index: 45; border: none; padding: 0;
+    }
+    .rail-backdrop.open { display: block; }
+    .rail {
+      position: fixed; top: 0; left: 0; height: 100dvh; width: min(300px, 85vw);
+      border-right: 1px solid var(--border); background: var(--surface);
+      padding: 4.6rem 1.4rem 2rem; transform: translateX(-100%);
+      transition: transform 0.28s ease; z-index: 50; box-shadow: var(--shadow);
+    }
+    .rail.open { transform: translateX(0); }
+    .rail-close {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; padding: 0;
+    }
+    .main { padding: 4.6rem 1.4rem 5rem; }
   }
   @media (max-width: 560px) {
     .claims-table, .claims-table thead { display: none; }
@@ -206,13 +223,49 @@
 </style>
 
 <script>
-  function toggleToc() {
-    document.querySelector('.rail').classList.toggle('open');
+  function openMenu() {
+    document.querySelector('.rail').classList.add('open');
+    document.querySelector('.rail-backdrop').classList.add('open');
+    document.body.classList.add('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'true');
   }
+  function closeMenu() {
+    document.querySelector('.rail').classList.remove('open');
+    document.querySelector('.rail-backdrop').classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+  }
+  function toggleToc() {
+    var rail = document.querySelector('.rail');
+    if (rail.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.rail nav a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+  });
 </script>
+
+<button class="menu-toggle" onclick="toggleToc()" aria-label="Open contents" aria-controls="rail" aria-expanded="false">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="4" y1="7" x2="20" y2="7"></line>
+    <line x1="4" y1="12" x2="20" y2="12"></line>
+    <line x1="4" y1="17" x2="20" y2="17"></line>
+  </svg>
+</button>
+<button class="rail-backdrop" onclick="closeMenu()" aria-hidden="true" tabindex="-1"></button>
 
 <div class="shell">
   <aside class="rail" id="rail">
+    <button class="rail-close" onclick="closeMenu()" aria-label="Close contents">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
     <div class="rail-brand">
       <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
         <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="var(--accent-bright)" stroke-width="1.5" stroke-linejoin="round"></path>
@@ -221,7 +274,6 @@
       </svg>
       <span class="rail-brand-text">Signature</span>
     </div>
-    <button class="mobile-toc-toggle" onclick="toggleToc()">Contents <span aria-hidden="true">&#9662;</span></button>
     <nav>
       <a href="#introduction"><span class="rail-num">00</span>Introduction</a>
       <div class="rail-group">
