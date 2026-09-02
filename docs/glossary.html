@@ -1,0 +1,259 @@
+<title>Glossary · Signature Documentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #0d1b2a; --ink-soft: #1b2b3a;
+    --ivory: #f6f3ec; --paper: #fffefb; --paper-2: #fbfaf6;
+    --emerald: #1c6e5a; --emerald-bright: #2a9d78; --emerald-wash: #e4efe9;
+    --slate: #5a6672; --slate-soft: #5f6b77;
+    --line: #d9d3c6; --line-strong: #c9c1af;
+    --danger: #b0413a; --danger-wash: #f7e9e7;
+
+    --bg: var(--ivory); --surface: var(--paper); --surface-2: var(--paper-2);
+    --text: var(--ink); --text-secondary: var(--slate); --text-muted: var(--slate-soft);
+    --border: var(--line); --accent: var(--emerald); --accent-bright: var(--emerald-bright);
+    --accent-wash: var(--emerald-wash);
+    --shadow: 0 1px 2px rgba(13,27,42,0.04), 0 10px 26px -18px rgba(13,27,42,0.3);
+
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+      --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+      --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+      --accent-wash: #123328;
+      --danger: #e2685f; --danger-wash: #33161c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+    --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+    --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+    --accent-wash: #123328;
+    --danger: #e2685f; --danger-wash: #33161c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 16px; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-bright); text-decoration: underline; }
+  ::selection { background: var(--accent-wash); }
+
+  .shell { display: grid; grid-template-columns: 260px minmax(0,1fr); max-width: 1240px; margin: 0 auto; }
+  .rail {
+    position: sticky; top: 0; align-self: start; height: 100dvh; overflow-y: auto;
+    padding: 2.4rem 1.4rem 2.4rem 1.8rem; border-right: 1px solid var(--border);
+  }
+  .rail-brand { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem; }
+  .rail-brand svg { flex-shrink: 0; }
+  .rail-brand-text { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .rail nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .rail a {
+    color: var(--text-secondary); font-size: 13.5px; padding: 0.32rem 0.6rem; border-radius: 6px;
+    display: block; line-height: 1.4;
+  }
+  .rail a.sub { padding-left: 1.4rem; font-size: 12.5px; color: var(--text-muted); }
+  .rail a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+  .rail a.active { color: var(--text); font-weight: 600; background: var(--accent-wash); }
+  .rail a.sub.active { color: var(--accent); font-weight: 600; background: none; }
+  .rail-group { margin-top: 0.85rem; }
+  .rail-num { font-family: var(--mono); color: var(--text-muted); margin-right: 0.4rem; }
+
+  .main { padding: 3.4rem 3.4rem 8rem; max-width: 840px; }
+
+  header.doc-head { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 0.9rem;
+  }
+  h1.doc-title {
+    font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 1.7rem + 1.6vw, 2.9rem);
+    line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+  .doc-dek { font-size: 17px; color: var(--text-secondary); max-width: 60ch; margin: 0 0 1.4rem; }
+
+  .section-num { font-family: var(--mono); color: var(--accent); font-size: 0.95rem; margin-right: 0.5rem; }
+  .section-dek { color: var(--text-secondary); font-size: 15px; max-width: 62ch; margin: 0 0 1.8rem; }
+
+  p { margin: 0 0 1rem; }
+
+  .glossary-item { padding: 1rem 0; border-top: 1px solid var(--border); }
+  .glossary-item:last-child { border-bottom: 1px solid var(--border); }
+  .glossary-term { font-family: var(--display); font-weight: 500; font-size: 1.05rem; margin: 0 0 0.35rem; }
+  .glossary-def { font-size: 14px; color: var(--text-secondary); margin: 0; }
+
+  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .pager a { border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 14px; color: var(--text); max-width: 46%; }
+  .pager a:hover { border-color: var(--accent); text-decoration: none; background: var(--surface-2); }
+  .pager-dir { display: block; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .pager-next { margin-left: auto; text-align: right; }
+
+  .menu-toggle { display: none; }
+  .rail-close { display: none; }
+  .rail-backdrop { display: none; border: none; padding: 0; }
+  body.menu-open { overflow: hidden; }
+
+  @media (max-width: 980px) {
+    .shell { grid-template-columns: 1fr; }
+    .menu-toggle {
+      display: flex; align-items: center; justify-content: center;
+      position: fixed; top: 1rem; left: 1rem; z-index: 40;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--surface); box-shadow: var(--shadow); color: var(--text); cursor: pointer; padding: 0;
+    }
+    .rail-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(13,27,42,0.45); z-index: 45; border: none; padding: 0;
+    }
+    .rail-backdrop.open { display: block; }
+    .rail {
+      position: fixed; top: 0; left: 0; height: 100dvh; width: min(300px, 85vw);
+      border-right: 1px solid var(--border); background: var(--surface);
+      padding: 4.6rem 1.4rem 2rem; transform: translateX(-100%);
+      transition: transform 0.28s ease; z-index: 50; box-shadow: var(--shadow);
+    }
+    .rail.open { transform: translateX(0); }
+    .rail-close {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; padding: 0;
+    }
+    .main { padding: 4.6rem 1.4rem 5rem; }
+  }
+</style>
+
+<script>
+  function openMenu() {
+    document.querySelector('.rail').classList.add('open');
+    document.querySelector('.rail-backdrop').classList.add('open');
+    document.body.classList.add('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    document.querySelector('.rail').classList.remove('open');
+    document.querySelector('.rail-backdrop').classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+  }
+  function toggleToc() {
+    var rail = document.querySelector('.rail');
+    if (rail.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.rail nav a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+  });
+</script>
+
+<button class="menu-toggle" onclick="toggleToc()" aria-label="Open contents" aria-controls="rail" aria-expanded="false">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="4" y1="7" x2="20" y2="7"></line>
+    <line x1="4" y1="12" x2="20" y2="12"></line>
+    <line x1="4" y1="17" x2="20" y2="17"></line>
+  </svg>
+</button>
+<button class="rail-backdrop" onclick="closeMenu()" aria-hidden="true" tabindex="-1"></button>
+
+<div class="shell">
+  <aside class="rail" id="rail">
+    <button class="rail-close" onclick="closeMenu()" aria-label="Close contents">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="rail-brand">
+      <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="var(--accent-bright)" stroke-width="1.5" stroke-linejoin="round"></path>
+        <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="var(--accent-bright)"></rect>
+        <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="var(--accent)"></rect>
+      </svg>
+      <span class="rail-brand-text">Signature Docs</span>
+    </div>
+    <nav>
+      <a href="./index.html"><span class="rail-num">00</span>Introduction</a>
+      <div class="rail-group">
+        <a href="./executive-summary.html"><span class="rail-num">01</span>Executive Summary</a>
+        <a href="./executive-summary.html#the-problem" class="sub">The Problem</a>
+        <a href="./executive-summary.html#the-cooperative-model" class="sub">The Cooperative Model</a>
+        <a href="./executive-summary.html#why-now" class="sub">Why Now</a>
+      </div>
+      <div class="rail-group">
+        <a href="./proof-of-concept.html"><span class="rail-num">02</span>Proof of Concept</a>
+        <a href="./proof-of-concept.html#whats-live" class="sub">What's Live</a>
+        <a href="./proof-of-concept.html#security-audit" class="sub">Security &amp; Audit</a>
+        <a href="./proof-of-concept.html#financial-controls" class="sub">Financial Controls</a>
+        <a href="./proof-of-concept.html#compliance-kyc" class="sub">Compliance &amp; KYC</a>
+        <a href="./proof-of-concept.html#infrastructure-uptime" class="sub">Infrastructure &amp; Uptime</a>
+      </div>
+      <div class="rail-group">
+        <a href="./mathematical-modeling.html"><span class="rail-num">03</span>Mathematical Modeling</a>
+        <a href="./mathematical-modeling.html#ownership-mechanics" class="sub">Fractional Ownership Mechanics</a>
+        <a href="./mathematical-modeling.html#returns-yield" class="sub">Returns &amp; Yield Distribution</a>
+        <a href="./mathematical-modeling.html#risk-model" class="sub">Risk Model</a>
+        <a href="./mathematical-modeling.html#pool-dynamics" class="sub">Cooperative Pool Dynamics</a>
+      </div>
+      <div class="rail-group">
+        <a href="./legal-governance.html"><span class="rail-num">04</span>Legal &amp; Governance</a>
+        <a href="./legal-governance.html#cooperative-structure" class="sub">Cooperative Structure</a>
+        <a href="./legal-governance.html#member-rights" class="sub">Member Rights &amp; Obligations</a>
+        <a href="./legal-governance.html#regulatory-positioning" class="sub">Regulatory Positioning</a>
+        <a href="./legal-governance.html#asset-custody" class="sub">Asset Custody &amp; Title</a>
+      </div>
+      <div class="rail-group">
+        <a href="./roadmap.html"><span class="rail-num">05</span>Roadmap</a>
+        <a href="./roadmap.html#current-status" class="sub">Current Status</a>
+        <a href="./roadmap.html#whats-next" class="sub">What's Next</a>
+      </div>
+      <div class="rail-group">
+        <a href="./marketing.html"><span class="rail-num">06</span>Marketing</a>
+        <a href="./marketing.html#campaign-archive" class="sub">Campaign Archive</a>
+        <a href="./marketing.html#claims-proof" class="sub">Claims &amp; Their Proof</a>
+      </div>
+      <div class="rail-group">
+        <a href="./faq.html"><span class="rail-num">07</span>FAQ</a>
+        <a href="./glossary.html" class="active"><span class="rail-num">08</span>Glossary</a>
+        <a href="./contact.html"><span class="rail-num">09</span>Contact</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="doc-head">
+      <p class="eyebrow">Signature Documentation</p>
+      <h1 class="doc-title"><span class="section-num">08</span>Glossary</h1>
+    </header>
+
+    <div class="glossary-item"><p class="glossary-term">Cooperative / Society</p><p class="glossary-def">Signature Private Cooperative is the trading name of Signature Private Multipurpose Cooperative Society Limited, registered under the Nigerian Co-operative Societies Act 98 of 2004. A cooperative society, not a fund or a brokerage.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Unit</p><p class="glossary-def">The fractional ownership instrument. An asset is divided into a fixed number of units at a fixed, platform-computed price.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Holding</p><p class="glossary-def">One line of a member's portfolio, their position in one asset: units held, the current market-anchor price, and their own real weighted-average cost basis.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Raise</p><p class="glossary-def">The fundraising and allocation period for one asset. Ends when the last unit is committed, all or nothing, or when staff cancel it and refund everyone.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Resale window</p><p class="glossary-def">A staff-scheduled, time-bounded window during which members may list units for sale. Outside a window, there is no trading.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Pro-rata distribution</p><p class="glossary-def">Revenue split proportionally to units held, net of platform fee, VAT, and withholding tax, using a method that guarantees the total paid always sums exactly.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Certificate of Unit Ownership</p><p class="glossary-def">A personal record of units held, acquisition date, and cost basis in an asset. Not a title deed.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Trust / trustee</p><p class="glossary-def">Signature holds legal title to each real asset as trustee for the members who capitalized it. A member's claim is a beneficial interest under that trust, not direct title.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Identity verification</p><p class="glossary-def">Verification required before a member can contribute capital or withdraw. Deposits are allowed before approval; moving money out is not.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Politically exposed person</p><p class="glossary-def">Self-declared at the time identity verification is submitted. Never automatically rejects a member; it gives staff something concrete to weigh at review.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Dual approval</p><p class="glossary-def">Above a configurable amount, a second, different staff member must independently approve a withdrawal or revenue entry before it executes.</p></div>
+    <div class="glossary-item"><p class="glossary-term">Walk-in candidate</p><p class="glossary-def">An applicant admitted without a personal referrer, subject to a separate legal agreement and provisional status until formally sponsored by the Society's leadership.</p></div>
+
+    <nav class="pager">
+      <a class="pager-prev" href="./faq.html"><span class="pager-dir">Previous</span>&larr; FAQ</a>
+      <a class="pager-next" href="./contact.html"><span class="pager-dir">Next</span>Contact &rarr;</a>
+    </nav>
+  </main>
+</div>

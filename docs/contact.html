@@ -1,0 +1,278 @@
+<title>Contact · Signature Documentation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+  :root {
+    --ink: #0d1b2a; --ink-soft: #1b2b3a;
+    --ivory: #f6f3ec; --paper: #fffefb; --paper-2: #fbfaf6;
+    --emerald: #1c6e5a; --emerald-bright: #2a9d78; --emerald-wash: #e4efe9;
+    --slate: #5a6672; --slate-soft: #5f6b77;
+    --line: #d9d3c6; --line-strong: #c9c1af;
+    --danger: #b0413a; --danger-wash: #f7e9e7;
+
+    --bg: var(--ivory); --surface: var(--paper); --surface-2: var(--paper-2);
+    --text: var(--ink); --text-secondary: var(--slate); --text-muted: var(--slate-soft);
+    --border: var(--line); --accent: var(--emerald); --accent-bright: var(--emerald-bright);
+    --accent-wash: var(--emerald-wash);
+    --shadow: 0 1px 2px rgba(13,27,42,0.04), 0 10px 26px -18px rgba(13,27,42,0.3);
+
+    --display: 'Fraunces', Georgia, serif;
+    --body: 'Inter', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+      --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+      --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+      --accent-wash: #123328;
+      --danger: #e2685f; --danger-wash: #33161c;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0d1b2a; --surface: #17293c; --surface-2: #1f3348;
+    --text: #f3f6f8; --text-secondary: #a9bacb; --text-muted: #86a0b0;
+    --border: #2c4359; --accent: #34c194; --accent-bright: #34c194;
+    --accent-wash: #123328;
+    --danger: #e2685f; --danger-wash: #33161c;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 10px 26px -12px rgba(0,0,0,0.55);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--body); font-size: 16px; line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-bright); text-decoration: underline; }
+  ::selection { background: var(--accent-wash); }
+
+  .shell { display: grid; grid-template-columns: 260px minmax(0,1fr); max-width: 1240px; margin: 0 auto; }
+  .rail {
+    position: sticky; top: 0; align-self: start; height: 100dvh; overflow-y: auto;
+    padding: 2.4rem 1.4rem 2.4rem 1.8rem; border-right: 1px solid var(--border);
+  }
+  .rail-brand { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem; }
+  .rail-brand svg { flex-shrink: 0; }
+  .rail-brand-text { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .rail nav { display: flex; flex-direction: column; gap: 0.1rem; }
+  .rail a {
+    color: var(--text-secondary); font-size: 13.5px; padding: 0.32rem 0.6rem; border-radius: 6px;
+    display: block; line-height: 1.4;
+  }
+  .rail a.sub { padding-left: 1.4rem; font-size: 12.5px; color: var(--text-muted); }
+  .rail a:hover { background: var(--surface-2); color: var(--text); text-decoration: none; }
+  .rail a.active { color: var(--text); font-weight: 600; background: var(--accent-wash); }
+  .rail a.sub.active { color: var(--accent); font-weight: 600; background: none; }
+  .rail-group { margin-top: 0.85rem; }
+  .rail-num { font-family: var(--mono); color: var(--text-muted); margin-right: 0.4rem; }
+
+  .main { padding: 3.4rem 3.4rem 8rem; max-width: 840px; }
+
+  header.doc-head { margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 0.9rem;
+  }
+  h1.doc-title {
+    font-family: var(--display); font-weight: 500; font-size: clamp(2.1rem, 1.7rem + 1.6vw, 2.9rem);
+    line-height: 1.08; letter-spacing: -0.01em; margin: 0 0 1.1rem; text-wrap: balance;
+  }
+  .section-num { font-family: var(--mono); color: var(--accent); font-size: 0.95rem; margin-right: 0.5rem; }
+
+  p { margin: 0 0 1rem; }
+
+  .callout {
+    border: 1px solid var(--border); border-left: 3px solid var(--line-strong); border-radius: 8px;
+    background: var(--surface); box-shadow: var(--shadow); padding: 1.1rem 1.3rem; margin: 1.2rem 0 1.6rem;
+  }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 0.45rem; display: block;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout p { font-size: 14px; }
+
+  .followup-list { list-style: none; margin: 0; padding: 0; counter-reset: fu; }
+  .followup-list li {
+    counter-increment: fu; position: relative; padding: 0.9rem 0 0.9rem 2.1rem; border-top: 1px solid var(--border);
+    font-size: 14.5px; color: var(--text-secondary);
+  }
+  .followup-list li:last-child { border-bottom: 1px solid var(--border); }
+  .followup-list li::before {
+    content: counter(fu); position: absolute; left: 0; top: 0.85rem; font-family: var(--mono); font-size: 12px;
+    color: var(--text-muted); font-weight: 600;
+  }
+
+  footer.doc-foot { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 13px; }
+
+  .pager { display: flex; justify-content: space-between; gap: 1rem; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .pager a { border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 14px; color: var(--text); max-width: 46%; }
+  .pager a:hover { border-color: var(--accent); text-decoration: none; background: var(--surface-2); }
+  .pager-dir { display: block; font-family: var(--mono); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 0.3rem; }
+  .pager-next { margin-left: auto; text-align: right; }
+
+  .menu-toggle { display: none; }
+  .rail-close { display: none; }
+  .rail-backdrop { display: none; border: none; padding: 0; }
+  body.menu-open { overflow: hidden; }
+
+  @media (max-width: 980px) {
+    .shell { grid-template-columns: 1fr; }
+    .menu-toggle {
+      display: flex; align-items: center; justify-content: center;
+      position: fixed; top: 1rem; left: 1rem; z-index: 40;
+      width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--surface); box-shadow: var(--shadow); color: var(--text); cursor: pointer; padding: 0;
+    }
+    .rail-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(13,27,42,0.45); z-index: 45; border: none; padding: 0;
+    }
+    .rail-backdrop.open { display: block; }
+    .rail {
+      position: fixed; top: 0; left: 0; height: 100dvh; width: min(300px, 85vw);
+      border-right: 1px solid var(--border); background: var(--surface);
+      padding: 4.6rem 1.4rem 2rem; transform: translateX(-100%);
+      transition: transform 0.28s ease; z-index: 50; box-shadow: var(--shadow);
+    }
+    .rail.open { transform: translateX(0); }
+    .rail-close {
+      display: flex; align-items: center; justify-content: center;
+      position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid var(--border); background: var(--surface-2); color: var(--text); cursor: pointer; padding: 0;
+    }
+    .main { padding: 4.6rem 1.4rem 5rem; }
+  }
+</style>
+
+<script>
+  function openMenu() {
+    document.querySelector('.rail').classList.add('open');
+    document.querySelector('.rail-backdrop').classList.add('open');
+    document.body.classList.add('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    document.querySelector('.rail').classList.remove('open');
+    document.querySelector('.rail-backdrop').classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+  }
+  function toggleToc() {
+    var rail = document.querySelector('.rail');
+    if (rail.classList.contains('open')) { closeMenu(); } else { openMenu(); }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.rail nav a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+  });
+</script>
+
+<button class="menu-toggle" onclick="toggleToc()" aria-label="Open contents" aria-controls="rail" aria-expanded="false">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="4" y1="7" x2="20" y2="7"></line>
+    <line x1="4" y1="12" x2="20" y2="12"></line>
+    <line x1="4" y1="17" x2="20" y2="17"></line>
+  </svg>
+</button>
+<button class="rail-backdrop" onclick="closeMenu()" aria-hidden="true" tabindex="-1"></button>
+
+<div class="shell">
+  <aside class="rail" id="rail">
+    <button class="rail-close" onclick="closeMenu()" aria-label="Close contents">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="rail-brand">
+      <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
+        <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="var(--accent-bright)" stroke-width="1.5" stroke-linejoin="round"></path>
+        <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="var(--accent-bright)"></rect>
+        <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="var(--accent)"></rect>
+      </svg>
+      <span class="rail-brand-text">Signature Docs</span>
+    </div>
+    <nav>
+      <a href="./index.html"><span class="rail-num">00</span>Introduction</a>
+      <div class="rail-group">
+        <a href="./executive-summary.html"><span class="rail-num">01</span>Executive Summary</a>
+        <a href="./executive-summary.html#the-problem" class="sub">The Problem</a>
+        <a href="./executive-summary.html#the-cooperative-model" class="sub">The Cooperative Model</a>
+        <a href="./executive-summary.html#why-now" class="sub">Why Now</a>
+      </div>
+      <div class="rail-group">
+        <a href="./proof-of-concept.html"><span class="rail-num">02</span>Proof of Concept</a>
+        <a href="./proof-of-concept.html#whats-live" class="sub">What's Live</a>
+        <a href="./proof-of-concept.html#security-audit" class="sub">Security &amp; Audit</a>
+        <a href="./proof-of-concept.html#financial-controls" class="sub">Financial Controls</a>
+        <a href="./proof-of-concept.html#compliance-kyc" class="sub">Compliance &amp; KYC</a>
+        <a href="./proof-of-concept.html#infrastructure-uptime" class="sub">Infrastructure &amp; Uptime</a>
+      </div>
+      <div class="rail-group">
+        <a href="./mathematical-modeling.html"><span class="rail-num">03</span>Mathematical Modeling</a>
+        <a href="./mathematical-modeling.html#ownership-mechanics" class="sub">Fractional Ownership Mechanics</a>
+        <a href="./mathematical-modeling.html#returns-yield" class="sub">Returns &amp; Yield Distribution</a>
+        <a href="./mathematical-modeling.html#risk-model" class="sub">Risk Model</a>
+        <a href="./mathematical-modeling.html#pool-dynamics" class="sub">Cooperative Pool Dynamics</a>
+      </div>
+      <div class="rail-group">
+        <a href="./legal-governance.html"><span class="rail-num">04</span>Legal &amp; Governance</a>
+        <a href="./legal-governance.html#cooperative-structure" class="sub">Cooperative Structure</a>
+        <a href="./legal-governance.html#member-rights" class="sub">Member Rights &amp; Obligations</a>
+        <a href="./legal-governance.html#regulatory-positioning" class="sub">Regulatory Positioning</a>
+        <a href="./legal-governance.html#asset-custody" class="sub">Asset Custody &amp; Title</a>
+      </div>
+      <div class="rail-group">
+        <a href="./roadmap.html"><span class="rail-num">05</span>Roadmap</a>
+        <a href="./roadmap.html#current-status" class="sub">Current Status</a>
+        <a href="./roadmap.html#whats-next" class="sub">What's Next</a>
+      </div>
+      <div class="rail-group">
+        <a href="./marketing.html"><span class="rail-num">06</span>Marketing</a>
+        <a href="./marketing.html#campaign-archive" class="sub">Campaign Archive</a>
+        <a href="./marketing.html#claims-proof" class="sub">Claims &amp; Their Proof</a>
+      </div>
+      <div class="rail-group">
+        <a href="./faq.html"><span class="rail-num">07</span>FAQ</a>
+        <a href="./glossary.html"><span class="rail-num">08</span>Glossary</a>
+        <a href="./contact.html" class="active"><span class="rail-num">09</span>Contact</a>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="doc-head">
+      <p class="eyebrow">Signature Documentation</p>
+      <h1 class="doc-title"><span class="section-num">09</span>Contact</h1>
+    </header>
+
+    <p><a href="mailto:help@signatureprivatecoop.com">help@signatureprivatecoop.com</a> &middot; <a href="tel:+2347047453529">0704 745 3529</a></p>
+    <p style="color:var(--text-secondary);">No. 68 Macaulay by Ikot Ekpene Road, First Floor, Methodist Shopping Plaza, Umuahia North LGA, Abia State, Nigeria<br>Monday to Friday, 9:00 to 17:00 West Africa Time</p>
+    <p style="font-size:13.5px; color:var(--text-muted);">See the address discrepancy noted under <a href="./legal-governance.html#asset-custody">Legal &amp; Governance &rsaquo; Asset Custody &amp; Title</a> before treating this address as final.</p>
+
+    <footer class="doc-foot">
+      <p><strong>Open items surfaced by this review, not resolved within this documentation itself:</strong></p>
+      <ol class="followup-list">
+        <li>The Membership Agreement's registered address and the address shown publicly disagree by one digit. Resolve which is correct.</li>
+        <li>The homepage's revenue worked example does not reflect real fee and tax withholding. Worth updating the marketing copy directly.</li>
+        <li>Government identity verification response handling should be confirmed against real production traffic before being described elsewhere as fully verified.</li>
+        <li>No specific citation to Nigeria's Companies and Allied Matters Act exists in current legal documentation. Would need separate legal sourcing if ever required.</li>
+        <li>Deposit availability status changed recently and is worth confirming directly rather than assuming from this review alone.</li>
+      </ol>
+      <p style="margin-top:2rem;">Prepared from a direct review of Signature's platform, legal documents, and public site as they stand today.</p>
+    </footer>
+
+    <nav class="pager">
+      <a class="pager-prev" href="./glossary.html"><span class="pager-dir">Previous</span>&larr; Glossary</a>
+      <span></span>
+    </nav>
+  </main>
+</div>
