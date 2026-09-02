@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signature Docs</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root { --ink: #0d1b2a; --ivory: #f6f3ec; --paper: #fffefb; --emerald: #1c6e5a; --emerald-bright: #2a9d78; --slate: #5a6672; --line: #d9d3c6; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100dvh; display: flex; align-items: center; justify-content: center;
+    background: var(--ink); color: var(--ivory); font-family: 'Inter', system-ui, sans-serif; padding: 2rem;
+  }
+  .wrap { max-width: 460px; text-align: center; }
+  .mark { margin-bottom: 1.6rem; }
+  h1 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 2rem; margin: 0 0 0.6rem; }
+  p.sub { color: rgba(246,243,236,0.65); font-size: 15px; margin: 0 0 2.4rem; line-height: 1.6; }
+  .links { display: flex; flex-direction: column; gap: 0.8rem; }
+  a.doc-link {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 1rem 1.3rem; border: 1px solid rgba(246,243,236,0.18); border-radius: 10px;
+    color: var(--ivory); text-decoration: none; font-size: 15px; font-weight: 500;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  a.doc-link:hover { border-color: var(--emerald-bright); background: rgba(42,157,120,0.08); }
+  a.doc-link span.arrow { color: var(--emerald-bright); }
+  a.doc-link small { display: block; font-weight: 400; color: rgba(246,243,236,0.55); margin-top: 0.2rem; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <svg class="mark" width="32" height="32" viewBox="0 0 26 26" aria-hidden="true">
+      <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="#2a9d78" stroke-width="1.4" stroke-linejoin="round"></path>
+      <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="#2a9d78"></rect>
+      <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="#1c6e5a"></rect>
+    </svg>
+    <h1>Signature Docs</h1>
+    <p class="sub">Two documents. One makes the case, the other backs it up.</p>
+    <div class="links">
+      <a class="doc-link" href="./manifesto.html">
+        <span>Manifesto<small>What Signature is, in plain terms</small></span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="doc-link" href="./investor-memorandum.html">
+        <span>Investor Memorandum<small>The evidence behind it</small></span>
+        <span class="arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
