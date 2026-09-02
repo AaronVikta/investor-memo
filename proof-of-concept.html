@@ -1,4 +1,6 @@
 <title>Proof of Concept · Signature Documentation</title>
+<link rel="icon" type="image/png" href="./favicon.png">
+<link rel="icon" type="image/x-icon" href="./favicon.ico">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
@@ -59,6 +61,7 @@
   .rail-brand { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 2rem; }
   .rail-brand svg { flex-shrink: 0; }
   .rail-brand-text { font-family: var(--display); font-weight: 600; font-size: 15px; letter-spacing: -0.01em; }
+  .rail-brand:hover { text-decoration: none; }
   .rail nav { display: flex; flex-direction: column; gap: 0.1rem; }
   .rail a {
     color: var(--text-secondary); font-size: 13.5px; padding: 0.32rem 0.6rem; border-radius: 6px;
@@ -287,24 +290,24 @@
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
-    <div class="rail-brand">
+    <a class="rail-brand" href="./index.html">
       <svg width="24" height="24" viewBox="0 0 26 26" aria-hidden="true">
         <path d="M13 1.3 L24.2 11.2 L24.2 23.3 C24.2 24.2 23.4 25 22.5 25 L3.5 25 C2.6 25 1.8 24.2 1.8 23.3 L1.8 11.2 Z" fill="none" stroke="var(--accent-bright)" stroke-width="1.5" stroke-linejoin="round"></path>
         <rect x="6.3" y="12.3" width="8" height="8" rx="1.8" fill="var(--accent-bright)"></rect>
         <rect x="12.3" y="16.3" width="8" height="8" rx="1.8" fill="var(--accent)"></rect>
       </svg>
       <span class="rail-brand-text">Signature Docs</span>
-    </div>
+    </a>
     <nav>
-      <a href="./index.html"><span class="rail-num">00</span>Introduction</a>
+      <a href="./introduction.html"><span class="rail-num">01</span>Introduction</a>
       <div class="rail-group">
-        <a href="./executive-summary.html"><span class="rail-num">01</span>Executive Summary</a>
+        <a href="./executive-summary.html"><span class="rail-num">02</span>Executive Summary</a>
         <a href="./executive-summary.html#the-problem" class="sub">The Problem</a>
         <a href="./executive-summary.html#the-cooperative-model" class="sub">The Cooperative Model</a>
         <a href="./executive-summary.html#why-now" class="sub">Why Now</a>
       </div>
       <div class="rail-group">
-        <a href="./proof-of-concept.html" class="active"><span class="rail-num">02</span>Proof of Concept</a>
+        <a href="./proof-of-concept.html" class="active"><span class="rail-num">03</span>Proof of Concept</a>
         <a href="./proof-of-concept.html#whats-live" class="sub">What's Live</a>
         <a href="./proof-of-concept.html#security-audit" class="sub">Security &amp; Audit</a>
         <a href="./proof-of-concept.html#financial-controls" class="sub">Financial Controls</a>
@@ -312,33 +315,33 @@
         <a href="./proof-of-concept.html#infrastructure-uptime" class="sub">Infrastructure &amp; Uptime</a>
       </div>
       <div class="rail-group">
-        <a href="./mathematical-modeling.html"><span class="rail-num">03</span>Mathematical Modeling</a>
+        <a href="./mathematical-modeling.html"><span class="rail-num">04</span>Mathematical Modeling</a>
         <a href="./mathematical-modeling.html#ownership-mechanics" class="sub">Fractional Ownership Mechanics</a>
         <a href="./mathematical-modeling.html#returns-yield" class="sub">Returns &amp; Yield Distribution</a>
         <a href="./mathematical-modeling.html#risk-model" class="sub">Risk Model</a>
         <a href="./mathematical-modeling.html#pool-dynamics" class="sub">Cooperative Pool Dynamics</a>
       </div>
       <div class="rail-group">
-        <a href="./legal-governance.html"><span class="rail-num">04</span>Legal &amp; Governance</a>
+        <a href="./legal-governance.html"><span class="rail-num">05</span>Legal &amp; Governance</a>
         <a href="./legal-governance.html#cooperative-structure" class="sub">Cooperative Structure</a>
         <a href="./legal-governance.html#member-rights" class="sub">Member Rights &amp; Obligations</a>
         <a href="./legal-governance.html#regulatory-positioning" class="sub">Regulatory Positioning</a>
         <a href="./legal-governance.html#asset-custody" class="sub">Asset Custody &amp; Title</a>
       </div>
       <div class="rail-group">
-        <a href="./roadmap.html"><span class="rail-num">05</span>Roadmap</a>
+        <a href="./roadmap.html"><span class="rail-num">06</span>Roadmap</a>
         <a href="./roadmap.html#current-status" class="sub">Current Status</a>
         <a href="./roadmap.html#whats-next" class="sub">What's Next</a>
       </div>
       <div class="rail-group">
-        <a href="./marketing.html"><span class="rail-num">06</span>Marketing</a>
+        <a href="./marketing.html"><span class="rail-num">07</span>Marketing</a>
         <a href="./marketing.html#campaign-archive" class="sub">Campaign Archive</a>
         <a href="./marketing.html#claims-proof" class="sub">Claims &amp; Their Proof</a>
       </div>
       <div class="rail-group">
-        <a href="./faq.html"><span class="rail-num">07</span>FAQ</a>
-        <a href="./glossary.html"><span class="rail-num">08</span>Glossary</a>
-        <a href="./contact.html"><span class="rail-num">09</span>Contact</a>
+        <a href="./faq.html"><span class="rail-num">08</span>FAQ</a>
+        <a href="./glossary.html"><span class="rail-num">09</span>Glossary</a>
+        <a href="./contact.html"><span class="rail-num">10</span>Contact</a>
       </div>
     </nav>
   </aside>
@@ -346,7 +349,7 @@
   <main class="main">
     <header class="doc-head">
       <p class="eyebrow">Signature Documentation</p>
-      <h1 class="doc-title"><span class="section-num">02</span>Proof of Concept</h1>
+      <h1 class="doc-title"><span class="section-num">03</span>Proof of Concept</h1>
       <p class="section-dek">Five questions, answered from the platform as it actually runs: what exists end to end, how it is secured, how money is protected in motion, how identity is verified, and how the system stays up. For scale: the platform is covered by hundreds of automated tests that run against a real database on every change, and every proposed update is blocked from release if it introduces a known security vulnerability or leaks sensitive data into a log.</p>
     </header>
 
